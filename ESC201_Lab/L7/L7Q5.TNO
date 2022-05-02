@@ -1,0 +1,41 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                        Transient Analysis of L7Q5                        ***
+***                           23-10-2021 14:53:53                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           1u
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Digital States
+=================================
+Node     State Node     State Node     State Node     State Node     State
+1        1     2        1     3        1     4        1     5        1    
+6        1     7        0     8        1     RBI      1     LT       1    
+A        0     B        0     C        0     D        0     X1.O_A   1    
+X1.O_B   1     X1.O_C   1     X1.O_D   1     X1.O_E   1     X1.O_F   1    
+X1.O_G   0    
+

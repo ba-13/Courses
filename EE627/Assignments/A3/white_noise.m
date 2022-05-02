@@ -1,0 +1,11 @@
+N = 5000;
+var = 0.0001;
+Fs = 1000;
+noise = sqrt(var)*randn(N, 1);
+figure;
+plot(1/Fs:1/Fs:N/Fs, noise);
+xlabel("Time");
+figure;
+plot(log10(abs(fft(noise))));
+player = audioplayer(noise, Fs);
+play(player);

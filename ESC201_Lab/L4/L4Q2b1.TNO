@@ -1,0 +1,162 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                       Transient Analysis of L4Q2b1                       ***
+***                           21-09-2021 15:37:58                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           5m
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1           993.791m  2             1.586   3           917.138m 
+4            12.000   5             0.000   6             0.000  
+
+
+Operating Point for Devices of Type Bipolar Junction Transistors NPN
+====================================================================
+Instance:               Q1
+Using model:        2N3904
+
+Beta Terms:
+BETADC              4.001 
+BETAAC            172.932 
+
+Capacitance Terms:
+CPI                24.421p
+CMU                 2.046n
+CBX                 0.000 
+CJS                 0.000 
+
+Conductance Terms:
+GM                 33.328m
+
+Current Terms:
+IB                183.391u
+IC                733.747u
+
+Resistance Terms:
+RPI                 5.189K
+RX                  0.000 
+RO                303.792 
+
+Voltage Terms:
+VBE               669.019m
+VBC               592.367m
+VCE                76.652m
+
+Frequency Terms:
+FT                2.561MEG
+
+Power DC Terms:
+PD                178.936u
+PS                  0.000 
+
+DC Pin Currents:
+Ib                183.391u
+Ic                733.747u
+Ie               -917.138u
+Is                  0.000 
+
+Condition:
+State                  SAT
+
+Device Variables:
+area                1.000 
+vbe                 0.000 
+vce                 0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                RC            R1            R2            RE            RL
+V                   11.006        10.414         1.586       917.138m        0.000 
+Power DC Terms:
+PD                   8.076m        3.286m      209.658u      841.143u        0.000 
+
+DC Pin Currents:
+Ir                 733.747u      315.571u      132.180u      917.138u        0.000 
+
+Device Variables:
+tc1                  0.000         0.000         0.000         0.000         0.000 
+tc2                  0.000         0.000         0.000         0.000         0.000 
+
+
+Instance:            VIN.RS
+V                    0.000 
+Power DC Terms:
+PD                   0.000 
+
+DC Pin Currents:
+Ir                   0.000 
+
+Device Variables:
+tc1                  0.000 
+tc2                  0.000 
+
+
+
+Operating Point for Devices of Type Capacitor
+=============================================
+Instance:                C2            C1            CE
+V                  993.791m       -1.586       917.138m
+Power DC Terms:
+PS                   0.000         0.000         0.000 
+
+DC Pin Currents:
+Ic                   0.000         0.000         0.000 
+
+Device Variables:
+ic                   0.000         0.000         0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:               VIN
+Using model:        GENERAL
+V                    0.000 
+Power DC Terms:
+PG                   0.000 
+
+DC Pin Currents:
+ISource              0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:               VC
+V                  12.000 
+Power DC Terms:
+PG                 12.592m
+
+DC Pin Currents:
+ISource            -1.049m
+
+

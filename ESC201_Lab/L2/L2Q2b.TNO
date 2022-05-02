@@ -1,0 +1,86 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                       Transient Analysis of L2Q2b                        ***
+***                           24-08-2021 16:09:51                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           100u
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage 
+1             0.000   2            -1.000  
+
+DC Operating Point Inductor Current
+===================================
+Inductor     Current 
+L            -2.128m 
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                 R
+V                   -1.000 
+Power DC Terms:
+PD                   2.128m
+
+DC Pin Currents:
+Ir                  -2.128m
+
+Device Variables:
+tc1                  0.000 
+tc2                  0.000 
+
+
+
+Operating Point for Devices of Type Inductor
+============================================
+Instance:                 L
+V                    0.000 
+Power DC Terms:
+PS                   0.000 
+
+DC Pin Currents:
+Il                  -2.128m
+
+Device Variables:
+ic                   0.000 
+
+
+
+Operating Point for Devices of Type Pulse
+=========================================
+Instance:                V1
+Using model:          PULSE
+V                   -1.000 
+Power DC Terms:
+PG                   2.128m
+
+DC Pin Currents:
+ISource              2.128m
+
+

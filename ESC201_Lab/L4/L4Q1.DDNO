@@ -1,0 +1,136 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                            Dynamic DC of L4Q1                            ***
+***                           21-09-2021 14:42:37                            ***
+********************************************************************************
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1           145.239m  2           638.462m  3             1.000  
+4             5.000  
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:               D1
+Using model:      $GENERIC
+
+Capacitance Terms:
+CAP                 2.343p
+
+Current Terms:
+ID                 -8.128n
+
+Resistance Terms:
+REQ                 4.958G
+
+Voltage Terms:
+VD               -638.462m
+
+Power DC Terms:
+PD                  5.190n
+PS                  0.000 
+
+DC Pin Currents:
+Id                 -8.128n
+
+Condition:
+State                  OFF
+
+Device Variables:
+area                1.000 
+ic                  0.000 
+
+
+
+Operating Point for Devices of Type Bipolar Junction Transistors NPN
+====================================================================
+Instance:               Q1
+Using model:        2N3904
+
+Beta Terms:
+BETADC             42.119 
+BETAAC            162.194 
+
+Capacitance Terms:
+CPI                12.550p
+CMU                49.229p
+CBX                 0.000 
+CJS                 0.000 
+
+Conductance Terms:
+GM                 12.330m
+
+Current Terms:
+IB                  7.684u
+IC                323.651u
+
+Resistance Terms:
+RPI                13.154K
+RX                  0.000 
+RO                 13.140K
+
+Voltage Terms:
+VBE               638.462m
+VBC               493.222m
+VCE               145.239m
+
+Frequency Terms:
+FT               31.764MEG
+
+Power DC Terms:
+PD                 51.913u
+PS                  0.000 
+
+DC Pin Currents:
+Ib                  7.684u
+Ic                323.651u
+Ie               -331.335u
+Is                  0.000 
+
+Condition:
+State                  SAT
+
+Device Variables:
+area                1.000 
+vbe                 0.000 
+vce                 0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                RB            RC
+V                  361.538m        4.855 
+Power DC Terms:
+PD                   2.781u        1.571m
+
+DC Pin Currents:
+Ir                   7.692u      323.651u
+
+Device Variables:
+tc1                  0.000         0.000 
+tc2                  0.000         0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:               VI           VCC
+V                   1.000         5.000 
+Power DC Terms:
+PG                  7.692u        1.618m
+
+DC Pin Currents:
+ISource            -7.692u     -323.651u
+
+

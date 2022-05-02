@@ -1,0 +1,112 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                            Dynamic DC of L1Q3                            ***
+***                           17-08-2021 16:56:28                            ***
+********************************************************************************
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             5.000   2             2.500   3            50.000n 
+4             2.500n  5             5.000   6             1.667  
+7            33.333n  8             1.667  
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                 R1             R2         DMM-R1             R3
+V                     2.500          2.500         50.000n         3.333 
+Power DC Terms:
+PD                  625.000u       625.000u     1.250E-022        11.111u
+
+DC Pin Currents:
+Ir                  250.000u       250.000u         2.500f         3.333u
+
+Device Variables:
+tc1                   0.000          0.000          0.000          0.000 
+tc2                   0.000          0.000          0.000          0.000 
+
+
+Instance:                 R4         DMM-R2     SWITCH1.R1     SWITCH1.R2
+V                     1.667         33.333n         1.667          1.667 
+Power DC Terms:
+PD                    2.778u     5.556E-023         2.778f         2.778p
+
+DC Pin Currents:
+Ir                    1.667u         1.667f         1.667f         1.667p
+
+Device Variables:
+tc1                   0.000          0.000          0.000          0.000 
+tc2                   0.000          0.000          0.000          0.000 
+
+
+Instance:         SWITCH2.R1     SWITCH2.R2     SWITCH3.R1     SWITCH3.R2
+V                     1.667n         1.667          2.500          2.500 
+Power DC Terms:
+PD                    2.778f         2.778p         6.250f         6.250p
+
+DC Pin Currents:
+Ir                    1.667u         1.667p         2.500f         2.500p
+
+Device Variables:
+tc1                   0.000          0.000          0.000          0.000 
+tc2                   0.000          0.000          0.000          0.000 
+
+
+Instance:         SWITCH4.R1     SWITCH4.R2         CRO-R2         CRO-R1
+V                     2.500          2.500         -1.667         -2.500n
+Power DC Terms:
+PD                    6.250f         6.250p         2.778u     6.250E-024
+
+DC Pin Currents:
+Ir                    2.500f         2.500p        -1.667u        -2.500f
+
+Device Variables:
+tc1                   0.000          0.000          0.000          0.000 
+tc2                   0.000          0.000          0.000          0.000 
+
+
+
+Operating Point for Devices of Type Capacitor
+=============================================
+Instance:             CRO_C2         CRO_C3
+V                     2.500n         1.667 
+Power DC Terms:
+PS                    0.000          0.000 
+
+DC Pin Currents:
+Ic                    0.000          0.000 
+
+Device Variables:
+ic                    0.000          0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:          BATTERY1       BATTERY2     SWITCH1.V1     SWITCH2.V1
+V                    5.000          5.000          0.000          0.000 
+Power DC Terms:
+PG                   1.250m        16.667u         0.000          0.000 
+
+DC Pin Currents:
+ISource           -250.000u        -3.333u         1.668p         1.667u
+
+
+Instance:        SWITCH3.V1     SWITCH4.V1
+V                    0.000          0.000 
+Power DC Terms:
+PG                   0.000          0.000 
+
+DC Pin Currents:
+ISource              2.502p         2.502p
+
+

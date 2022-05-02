@@ -1,0 +1,99 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                       Transient Analysis of L3Q2a                        ***
+***                           31-08-2021 15:53:33                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           100m
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      On
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage 
+1        -7.028E-028  2         7.028E-023 
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:                D1
+Using model:          1N914
+
+Capacitance Terms:
+CAP                  1.586p
+
+Current Terms:
+ID              -1.844E-032
+
+Resistance Terms:
+REQ                6.684MEG
+
+Voltage Terms:
+VD              -7.028E-023
+
+Power DC Terms:
+PD               1.319E-054
+PS                   0.000 
+
+DC Pin Currents:
+Id              -1.844E-032
+
+Condition:
+State                   OFF
+
+Device Variables:
+area                 1.000 
+ic                   0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                 R1          V1.RS
+V                 7.028E-023    -7.028E-028
+Power DC Terms:
+PD                4.939E-047     4.939E-052
+
+DC Pin Currents:
+Ir                7.028E-025    -7.028E-025
+
+Device Variables:
+tc1                   0.000          0.000 
+tc2                   0.000          0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:                 V1
+Using model:            60HZ
+V                -7.028E-028
+Power DC Terms:
+PG                    0.000 
+
+DC Pin Currents:
+ISource          -7.028E-025
+
+

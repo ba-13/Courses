@@ -1,0 +1,91 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                  Transient Analysis of L6Q3_integrator                   ***
+***                           05-10-2021 18:38:20                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           160u
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      On
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1          -100.119u  2             0.000   3            19.999  
+4             0.000   5            -2.000  
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:              X1.R            R1            R2        X1.int        X1.int
+V                   19.999       -19.999        -2.000         0.000         0.000 
+Power DC Terms:
+PD                   3.200         4.000m      399.960u        0.000         0.000 
+
+DC Pin Currents:
+Ir                 159.991m     -199.990u     -199.990u        0.000         0.000 
+
+Device Variables:
+tc1                  0.000         0.000         0.000         0.000         0.000 
+tc2                  0.000         0.000         0.000         0.000         0.000 
+
+
+
+Operating Point for Devices of Type Capacitor
+=============================================
+Instance:                C1
+V                   19.999 
+Power DC Terms:
+PS                   0.000 
+
+DC Pin Currents:
+Ic                   0.000 
+
+Device Variables:
+ic                   0.000 
+
+
+
+Operating Point for Devices of Type Opamp
+=========================================
+Instance:               X1
+Using model:         LM741
+Condition:
+State                  LIN
+
+
+
+Operating Point for Devices of Type Pulse
+=========================================
+Instance:                V1
+Using model:         SQUARE
+V                   -2.000 
+Power DC Terms:
+PG                 399.980u
+
+DC Pin Currents:
+ISource            199.990u
+
+

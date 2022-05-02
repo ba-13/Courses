@@ -1,0 +1,80 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                            Dynamic DC of L3Q1                            ***
+***                           31-08-2021 13:56:36                            ***
+********************************************************************************
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage 
+1           370.767m  2           750.000m 
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:               D1
+Using model:        1N4001
+
+Capacitance Terms:
+CAP                27.093n
+
+Current Terms:
+ID                379.233u
+
+Resistance Terms:
+REQ               182.521 
+
+Voltage Terms:
+VD                370.767m
+
+Power DC Terms:
+PD                140.607u
+PS                  0.000 
+
+DC Pin Currents:
+Id                379.233u
+
+Condition:
+State                  OFF
+
+Device Variables:
+area                1.000 
+ic                  0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                R1
+V                  379.233m
+Power DC Terms:
+PD                 143.817u
+
+DC Pin Currents:
+Ir                 379.233u
+
+Device Variables:
+tc1                  0.000 
+tc2                  0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:               V1
+V                 750.000m
+Power DC Terms:
+PG                284.424u
+
+DC Pin Currents:
+ISource          -379.233u
+
+

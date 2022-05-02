@@ -1,0 +1,40 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                        Transient Analysis of L9Q4                        ***
+***                           02-11-2021 16:43:13                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           1m
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Digital States
+=================================
+Node      State Node      State Node      State Node      State
+ONE       1     CLK       0     ZERO      0     QA        0    
+5         1     QB        0     7         1     X1.CLRBAR 1    
+X1.PREBAR 1     X1.CLKBAR 1     X2.CLRBAR 1     X2.PREBAR 1    
+X2.CLKBAR 1    
+

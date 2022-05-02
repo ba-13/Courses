@@ -1,0 +1,18 @@
+[mask, Fs] = audioread('./mask-audio.wav');
+mask = mask(:, 1);
+mask = mask(15000:end);
+mask = mask(1:length(mask)-10000);
+sample = mask(8000:10047);
+ham = hamming(2048, "symmetric");
+range = 1/Fs:1/Fs:length(mask)/Fs;
+figure;
+plot(mask);
+title("MASK Waveform");
+figure;
+plot(sample.*ham);
+sample = sample.*ham;
+title('M voiced part');
+mfft = fft(sample);
+figure;
+title('Spectrum of M');
+plot(log10(abs(mfft)));

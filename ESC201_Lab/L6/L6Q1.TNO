@@ -1,0 +1,125 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.5 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                        Transient Analysis of L6Q1                        ***
+***                           05-10-2021 18:02:55                            ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           4m
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      On
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1        -7.559E-022  2             2.344n  3             5.000  
+4            -5.000   5            -2.344n  6            -3.553f 
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:                D1             D2
+Using model:         1N4001         1N4001
+
+Capacitance Terms:
+CAP                 18.550p        18.550p
+
+Current Terms:
+ID                  -2.344u        -2.344u
+
+Resistance Terms:
+REQ               10.007MEG      10.007MEG
+
+Voltage Terms:
+VD                  -5.000         -5.000 
+
+Power DC Terms:
+PD                  11.718u        11.718u
+PS                   0.000          0.000 
+
+DC Pin Currents:
+Id                  -2.344u        -2.344u
+
+Condition:
+State                   OFF            OFF
+
+Device Variables:
+area                 1.000          1.000 
+ic                   0.000          0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:              V1.RS             R1     SWITCH1.R1     SWITCH1.R2
+V                -7.559E-022         3.553f        -2.344n        -3.553f
+Power DC Terms:
+PD                5.714E-040     2.685E-033         5.493f     1.262E-041
+
+DC Pin Currents:
+Ir                   -0.001f         0.001f        -2.344u    -3.553E-027
+
+Device Variables:
+tc1                   0.000          0.000          0.000          0.000 
+tc2                   0.000          0.000          0.000          0.000 
+
+
+Instance:         SWITCH2.R1     SWITCH2.R2
+V                     2.344n        -3.553f
+Power DC Terms:
+PD                    5.493f     1.262E-041
+
+DC Pin Currents:
+Ir                    2.344u    -3.553E-027
+
+Device Variables:
+tc1                   0.000          0.000 
+tc2                   0.000          0.000 
+
+
+
+Operating Point for Devices of Type Sine Source
+===============================================
+Instance:                 V1
+Using model:         GENERAL
+V                -7.559E-022
+Power DC Terms:
+PG                    0.000 
+
+DC Pin Currents:
+ISource              -0.001f
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:                V2             V3     SWITCH1.V1     SWITCH2.V1
+V                    5.000          5.000          0.000          0.000 
+Power DC Terms:
+PG                  11.718u        11.718u         0.000          0.000 
+
+DC Pin Currents:
+ISource             -2.344u        -2.344u        -2.344u         2.344u
+
+
