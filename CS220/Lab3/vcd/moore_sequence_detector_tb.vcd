@@ -1,0 +1,160 @@
+$date
+	Wed Feb 15 17:52:31 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module moore_sequence_detector_tb $end
+$var wire 1 ! out $end
+$var reg 1 " clk $end
+$var reg 1 # in $end
+$var reg 1 $ reset $end
+$scope module uut $end
+$var wire 1 " clk $end
+$var wire 1 # in $end
+$var wire 1 $ reset $end
+$var reg 3 % NS [2:0] $end
+$var reg 3 & PS [2:0] $end
+$var reg 1 ! out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 &
+b1 %
+1$
+1#
+0"
+0!
+$end
+#5000
+b1 &
+0$
+1"
+#10000
+b10 %
+0"
+0#
+#15000
+b0 %
+b10 &
+1"
+#20000
+b11 %
+0"
+1#
+#25000
+b1 %
+b11 &
+1"
+#30000
+b100 %
+0"
+0#
+#35000
+1!
+b0 %
+b100 &
+1"
+#40000
+b11 %
+0"
+1#
+#45000
+0!
+b1 %
+b11 &
+1"
+#50000
+b100 %
+0"
+0#
+#55000
+1!
+b0 %
+b100 &
+1"
+#60000
+b11 %
+0"
+1#
+#65000
+0!
+b1 %
+b11 &
+1"
+#70000
+b100 %
+0"
+0#
+#75000
+1!
+b0 %
+b100 &
+1"
+#80000
+b11 %
+0"
+1#
+#85000
+0!
+b1 %
+b11 &
+1"
+#90000
+b100 %
+0"
+0#
+#95000
+1!
+b0 %
+b100 &
+1"
+#100000
+0"
+#105000
+0!
+b0 &
+1"
+#110000
+b1 %
+0"
+1#
+#115000
+b1 &
+1"
+#120000
+b10 %
+0"
+0#
+#125000
+b0 %
+b10 &
+1"
+#130000
+b11 %
+0"
+1#
+#135000
+b1 %
+b11 &
+1"
+#140000
+0"
+#145000
+b1 &
+1"
+#150000
+b10 %
+0"
+0#
+#155000
+b0 %
+b10 &
+1"
+#160000
+0"

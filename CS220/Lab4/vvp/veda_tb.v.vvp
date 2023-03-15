@@ -1,0 +1,261 @@
+#! /usr/bin/vvp
+:ivl_version "10.3 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x558bc4447ec0 .scope module, "delay_one_cycle" "delay_one_cycle" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk"
+    .port_info 1 /INPUT 32 "original_signal"
+    .port_info 2 /OUTPUT 32 "delayed_signal"
+o0x7f7816710018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x558bc444df50_0 .net "clk", 0 0, o0x7f7816710018;  0 drivers
+v0x558bc4468290_0 .var "delayed_signal", 31 0;
+o0x7f7816710078 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x558bc4468370_0 .net "original_signal", 31 0, o0x7f7816710078;  0 drivers
+E_0x558bc4449620 .event posedge, v0x558bc444df50_0;
+S_0x558bc4448090 .scope module, "veda_tb" "veda_tb" 3 4;
+ .timescale -9 -12;
+v0x558bc4469690_0 .var "addr", 4 0;
+v0x558bc4469770_0 .var "clk", 0 0;
+v0x558bc4469840_0 .var "datain", 31 0;
+v0x558bc4469940_0 .net "dataout", 31 0, L_0x558bc443b5e0;  1 drivers
+v0x558bc4469a10_0 .var "mode", 0 0;
+v0x558bc4469ab0_0 .var "rst", 0 0;
+v0x558bc4469b80_0 .var "write_enable", 0 0;
+S_0x558bc44684b0 .scope module, "v" "veda" 3 14, 4 3 0, S_0x558bc4448090;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk"
+    .port_info 1 /INPUT 1 "rst"
+    .port_info 2 /INPUT 1 "write_enable"
+    .port_info 3 /INPUT 5 "addr"
+    .port_info 4 /INPUT 32 "datain"
+    .port_info 5 /INPUT 1 "mode"
+    .port_info 6 /OUTPUT 32 "dataout"
+L_0x558bc443b5e0 .functor BUFZ 32, v0x558bc4469350_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x558bc4468d50_0 .net "addr", 4 0, v0x558bc4469690_0;  1 drivers
+v0x558bc4468e10 .array "cells", 0 31, 31 0;
+v0x558bc4468ed0_0 .net "clk", 0 0, v0x558bc4469770_0;  1 drivers
+v0x558bc4468fa0_0 .net "datain", 31 0, v0x558bc4469840_0;  1 drivers
+v0x558bc4469080_0 .net "dataout", 31 0, L_0x558bc443b5e0;  alias, 1 drivers
+v0x558bc44691b0_0 .var/i "i", 31 0;
+v0x558bc4469290_0 .net "mode", 0 0, v0x558bc4469a10_0;  1 drivers
+v0x558bc4469350_0 .var "out", 31 0;
+v0x558bc4469430_0 .net "rst", 0 0, v0x558bc4469ab0_0;  1 drivers
+v0x558bc44694f0_0 .net "write_enable", 0 0, v0x558bc4469b80_0;  1 drivers
+E_0x558bc4447750 .event posedge, v0x558bc4468ed0_0;
+S_0x558bc4468770 .scope begin, "interpret" "interpret" 4 40, 4 40 0, S_0x558bc44684b0;
+ .timescale 0 0;
+S_0x558bc4468960 .scope begin, "reset" "reset" 4 30, 4 30 0, S_0x558bc44684b0;
+ .timescale 0 0;
+S_0x558bc4468b50 .scope begin, "scribble" "scribble" 4 35, 4 35 0, S_0x558bc44684b0;
+ .timescale 0 0;
+    .scope S_0x558bc4447ec0;
+T_0 ;
+    %wait E_0x558bc4449620;
+    %load/vec4 v0x558bc4468370_0;
+    %assign/vec4 v0x558bc4468290_0, 0;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x558bc44684b0;
+T_1 ;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v0x558bc4469350_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x558bc44691b0_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v0x558bc44691b0_0;
+    %cmpi/s 32, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %pushi/vec4 0, 0, 32;
+    %ix/getv/s 3, v0x558bc44691b0_0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x558bc4468e10, 0, 4;
+    %load/vec4 v0x558bc44691b0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x558bc44691b0_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+    .scope S_0x558bc44684b0;
+T_2 ;
+    %wait E_0x558bc4447750;
+    %load/vec4 v0x558bc4469430_0;
+    %pad/u 32;
+    %cmpi/e 1, 0, 32;
+    %jmp/0xz  T_2.0, 4;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x558bc44691b0_0, 0, 32;
+T_2.2 ;
+    %load/vec4 v0x558bc44691b0_0;
+    %cmpi/s 32, 0, 32;
+    %jmp/0xz T_2.3, 5;
+    %fork t_1, S_0x558bc4468960;
+    %jmp t_0;
+    .scope S_0x558bc4468960;
+t_1 ;
+    %pushi/vec4 0, 0, 32;
+    %ix/getv/s 3, v0x558bc44691b0_0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x558bc4468e10, 0, 4;
+    %end;
+    .scope S_0x558bc44684b0;
+t_0 %join;
+    %load/vec4 v0x558bc44691b0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x558bc44691b0_0, 0, 32;
+    %jmp T_2.2;
+T_2.3 ;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/vec4 v0x558bc44694f0_0;
+    %load/vec4 v0x558bc4469290_0;
+    %pad/u 32;
+    %pushi/vec4 0, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.4, 8;
+    %fork t_3, S_0x558bc4468b50;
+    %jmp t_2;
+    .scope S_0x558bc4468b50;
+t_3 ;
+    %load/vec4 v0x558bc4468fa0_0;
+    %load/vec4 v0x558bc4468d50_0;
+    %pad/u 7;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x558bc4468e10, 0, 4;
+    %load/vec4 v0x558bc4468fa0_0;
+    %assign/vec4 v0x558bc4469350_0, 0;
+    %end;
+    .scope S_0x558bc44684b0;
+t_2 %join;
+    %jmp T_2.5;
+T_2.4 ;
+    %load/vec4 v0x558bc44694f0_0;
+    %load/vec4 v0x558bc4469290_0;
+    %pad/u 32;
+    %pushi/vec4 1, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %and;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.6, 8;
+    %fork t_5, S_0x558bc4468770;
+    %jmp t_4;
+    .scope S_0x558bc4468770;
+t_5 ;
+    %load/vec4 v0x558bc4468d50_0;
+    %pad/u 7;
+    %ix/vec4 4;
+    %load/vec4a v0x558bc4468e10, 4;
+    %assign/vec4 v0x558bc4469350_0, 0;
+    %load/vec4 v0x558bc4468fa0_0;
+    %load/vec4 v0x558bc4468d50_0;
+    %pad/u 7;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x558bc4468e10, 0, 4;
+    %end;
+    .scope S_0x558bc44684b0;
+t_4 %join;
+    %jmp T_2.7;
+T_2.6 ;
+    %load/vec4 v0x558bc4468d50_0;
+    %pad/u 7;
+    %ix/vec4 4;
+    %load/vec4a v0x558bc4468e10, 4;
+    %assign/vec4 v0x558bc4469350_0, 0;
+T_2.7 ;
+T_2.5 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x558bc4448090;
+T_3 ;
+    %delay 5000, 0;
+    %load/vec4 v0x558bc4469770_0;
+    %inv;
+    %store/vec4 v0x558bc4469770_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x558bc4448090;
+T_4 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558bc4469b80_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558bc4469a10_0, 0, 1;
+    %pushi/vec4 10, 0, 5;
+    %store/vec4 v0x558bc4469690_0, 0, 5;
+    %pushi/vec4 2000, 0, 32;
+    %store/vec4 v0x558bc4469840_0, 0, 32;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558bc4469a10_0, 0, 1;
+    %pushi/vec4 13, 0, 5;
+    %store/vec4 v0x558bc4469690_0, 0, 5;
+    %pushi/vec4 3000, 0, 32;
+    %store/vec4 v0x558bc4469840_0, 0, 32;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558bc4469a10_0, 0, 1;
+    %pushi/vec4 12, 0, 5;
+    %store/vec4 v0x558bc4469690_0, 0, 5;
+    %pushi/vec4 3000, 0, 32;
+    %store/vec4 v0x558bc4469840_0, 0, 32;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558bc4469a10_0, 0, 1;
+    %pushi/vec4 10, 0, 5;
+    %store/vec4 v0x558bc4469690_0, 0, 5;
+    %pushi/vec4 4000, 0, 32;
+    %store/vec4 v0x558bc4469840_0, 0, 32;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558bc4469a10_0, 0, 1;
+    %pushi/vec4 13, 0, 5;
+    %store/vec4 v0x558bc4469690_0, 0, 5;
+    %pushi/vec4 56, 0, 32;
+    %store/vec4 v0x558bc4469840_0, 0, 32;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558bc4469a10_0, 0, 1;
+    %pushi/vec4 10, 0, 5;
+    %store/vec4 v0x558bc4469690_0, 0, 5;
+    %pushi/vec4 5000, 0, 32;
+    %store/vec4 v0x558bc4469840_0, 0, 32;
+    %delay 20000, 0;
+    %vpi_call 3 52 "$finish" {0 0 0};
+    %end;
+    .thread T_4;
+    .scope S_0x558bc4448090;
+T_5 ;
+    %vpi_call 3 56 "$dumpfile", "vcd/veda_tb.vcd" {0 0 0};
+    %vpi_call 3 57 "$dumpvars", 32'sb00000000000000000000000000000011, S_0x558bc4448090 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558bc4469770_0, 0, 1;
+    %end;
+    .thread T_5;
+    .scope S_0x558bc4448090;
+T_6 ;
+    %vpi_call 3 63 "$monitor", "rst=%b mode=%b addr=%d datain=%d \011 dataout=%d", v0x558bc4469ab0_0, v0x558bc4469a10_0, v0x558bc4469690_0, v0x558bc4469840_0, v0x558bc4469940_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x558bc4469ab0_0, 0, 1;
+    %delay 5000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x558bc4469ab0_0, 0, 1;
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "./delay_one_cycle.v";
+    "veda_tb.v";
+    "./veda.v";

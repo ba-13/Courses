@@ -1,0 +1,148 @@
+$date
+	Sun Feb 26 15:36:39 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module veda_tb $end
+$var wire 32 ! dataout [31:0] $end
+$var reg 5 " addr [4:0] $end
+$var reg 1 # clk $end
+$var reg 32 $ datain [31:0] $end
+$var reg 1 % mode $end
+$var reg 1 & rst $end
+$var reg 1 ' write_enable $end
+$scope module v $end
+$var wire 5 ( addr [4:0] $end
+$var wire 1 # clk $end
+$var wire 32 ) datain [31:0] $end
+$var wire 32 * dataout [31:0] $end
+$var wire 1 % mode $end
+$var wire 1 & rst $end
+$var wire 1 ' write_enable $end
+$var reg 32 + out [31:0] $end
+$var integer 32 , i [31:0] $end
+$scope begin interpret $end
+$upscope $end
+$scope begin reset $end
+$upscope $end
+$scope begin scribble $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100000 ,
+b0 +
+b0 *
+b11111010000 )
+b1010 (
+1'
+1&
+0%
+b11111010000 $
+0#
+b1010 "
+b0 !
+$end
+#5000
+b11111010000 !
+b11111010000 *
+b11111010000 +
+0&
+1#
+#10000
+0#
+#15000
+1#
+#20000
+0#
+b101110111000 $
+b101110111000 )
+b1101 "
+b1101 (
+#25000
+b101110111000 !
+b101110111000 *
+b101110111000 +
+1#
+#30000
+0#
+#35000
+1#
+#40000
+0#
+b1100 "
+b1100 (
+1%
+#45000
+b0 !
+b0 *
+b0 +
+1#
+#50000
+0#
+#55000
+b101110111000 !
+b101110111000 *
+b101110111000 +
+1#
+#60000
+0#
+b111110100000 $
+b111110100000 )
+b1010 "
+b1010 (
+#65000
+b11111010000 !
+b11111010000 *
+b11111010000 +
+1#
+#70000
+0#
+#75000
+b111110100000 !
+b111110100000 *
+b111110100000 +
+1#
+#80000
+0#
+b111000 $
+b111000 )
+b1101 "
+b1101 (
+0%
+#85000
+b111000 !
+b111000 *
+b111000 +
+1#
+#90000
+0#
+#95000
+1#
+#100000
+0#
+b1001110001000 $
+b1001110001000 )
+b1010 "
+b1010 (
+1%
+#105000
+b111110100000 !
+b111110100000 *
+b111110100000 +
+1#
+#110000
+0#
+#115000
+b1001110001000 !
+b1001110001000 *
+b1001110001000 +
+1#
+#120000
+0#

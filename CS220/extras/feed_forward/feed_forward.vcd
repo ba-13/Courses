@@ -1,0 +1,36 @@
+$date
+	Sun Jan  8 16:37:52 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module feed_forward_tb $end
+$var wire 1 ! B $end
+$var reg 1 " A $end
+$scope module uut $end
+$var wire 1 " A $end
+$var wire 1 ! B $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1"
+1!
+$end
+#20
+0!
+0"
+#40
+1!
+1"
+#80
+0!
+0"
+#100
+1!
+1"
+#140
