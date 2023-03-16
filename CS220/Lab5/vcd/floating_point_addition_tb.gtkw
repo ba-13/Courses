@@ -1,0 +1,70 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Wed Mar  1 10:50:03 2023
+[*]
+[dumpfile] "/attached/Documents/6.0_Sem/CS220/IVerilog/Lab5/vcd/floating_point_addition_tb.vcd"
+[dumpfile_mtime] "Wed Mar  1 10:47:45 2023"
+[dumpfile_size] 4023
+[savefile] "/attached/Documents/6.0_Sem/CS220/IVerilog/Lab5/vcd/floating_point_addition_tb.gtkw"
+[timestart] 58
+[size] 1920 1009
+[pos] -1 -1
+*-2.852838 70 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] floating_point_addition_tb.
+[sst_width] 290
+[signals_width] 170
+[sst_expanded] 1
+[sst_vpaned_height] 278
+@28
+floating_point_addition_tb.uut.clk
+@22
+floating_point_addition_tb.uut.mode[3:0]
+floating_point_addition_tb.uut.signed_a[25:0]
+@200
+-
+@22
+floating_point_addition_tb.uut.a[31:0]
+floating_point_addition_tb.uut.A[31:0]
+floating_point_addition_tb.uut.b[31:0]
+floating_point_addition_tb.uut.B[31:0]
+@200
+-
+@c00022
+floating_point_addition_tb.uut.C[31:0]
+@28
+(0)floating_point_addition_tb.uut.C[31:0]
+(1)floating_point_addition_tb.uut.C[31:0]
+(2)floating_point_addition_tb.uut.C[31:0]
+(3)floating_point_addition_tb.uut.C[31:0]
+(4)floating_point_addition_tb.uut.C[31:0]
+(5)floating_point_addition_tb.uut.C[31:0]
+(6)floating_point_addition_tb.uut.C[31:0]
+(7)floating_point_addition_tb.uut.C[31:0]
+(8)floating_point_addition_tb.uut.C[31:0]
+(9)floating_point_addition_tb.uut.C[31:0]
+(10)floating_point_addition_tb.uut.C[31:0]
+(11)floating_point_addition_tb.uut.C[31:0]
+(12)floating_point_addition_tb.uut.C[31:0]
+(13)floating_point_addition_tb.uut.C[31:0]
+(14)floating_point_addition_tb.uut.C[31:0]
+(15)floating_point_addition_tb.uut.C[31:0]
+(16)floating_point_addition_tb.uut.C[31:0]
+(17)floating_point_addition_tb.uut.C[31:0]
+(18)floating_point_addition_tb.uut.C[31:0]
+(19)floating_point_addition_tb.uut.C[31:0]
+(20)floating_point_addition_tb.uut.C[31:0]
+(21)floating_point_addition_tb.uut.C[31:0]
+(22)floating_point_addition_tb.uut.C[31:0]
+(23)floating_point_addition_tb.uut.C[31:0]
+(24)floating_point_addition_tb.uut.C[31:0]
+(25)floating_point_addition_tb.uut.C[31:0]
+(26)floating_point_addition_tb.uut.C[31:0]
+(27)floating_point_addition_tb.uut.C[31:0]
+(28)floating_point_addition_tb.uut.C[31:0]
+(29)floating_point_addition_tb.uut.C[31:0]
+(30)floating_point_addition_tb.uut.C[31:0]
+(31)floating_point_addition_tb.uut.C[31:0]
+@1401200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0
