@@ -1,0 +1,121 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{escexam}
+
+%\excludecomment{solution}
+
+%\renewcommand*\ttdefault{cmvtt}
+
+\begin{document}
+
+\vspace*{14ex}
+
+\makeheader{1}                              					% examination number (used to set theorem, lemma numbers)
+           {September 16, 2022}      					         		% examination date or deadline
+					 {40}											% total marks
+					 {Homework Assignment 3}							% Minor Quiz 1, Major Quiz 2, End sem, etc
+					
+\begin{tabular}{cl}
+1. & Write the answers \textbf{neatly} in the given boxes.\\
+2. & You may  discuss the solutions with the other students, but you have to write them in your own words.\\
+%4. & Do not give derivations/elaborate steps unless the question specifically asks you to provide these.
+\end{tabular}
+
+\begin{problem}{}
+(10 points) Provide the state-space representation of the dynamics of a DC Motor. Assume that there is no additional load on the motor. Next, Design a Simulink model to capture the dynamics and simulate the model for an input PWM voltage signal with magnitude 1V, frequency 1 kHz and duty cycle 0.1. Assume that the kinetic friction of the motor is negligible. Take the values of the other parameters from Example 7.13 in [LS15].
+
+\noindent
+[LS15] Edward A. Lee and Sanjit A. Seshia, Introduction to Embedded Systems, A Cyber-Physical Systems Approach, Second Edition, http://LeeSeshia.org, ISBN 978-1-312-42740-2, 2015. \\
+\\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{18cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\end{problem}
+
+
+\newpage
+\begin{problem}{}
+(20 points) Consider the vehicle steering control problem in Example 6.4 in [AM09]. Assume that $k_1 = 1$, $k_2 = 1.6$, and $k_r = 1$. Model the control system in Simulink using double precision floating point arithmetic. Now replace the model of the controller with the ones that use 16 bit and 8-bit fixed-point arithmetic. In each case, determine the fixed-point data types precisely. Plot the difference between the first state for the floating-point controller and that for the fixed-point controllers. Generate code for both the floating point controller and the fixed-point controllers using different optimization options. Describe your experience with code generation.
+
+\noindent
+[AM09] K. J. Astrom and R. M. Murray. Feedback Systems: An Introduction for Scientists and Engineers. Princeton University Press, 2009. \\
+http://www.cds.caltech.edu/$\sim$murray/books/AM05/pdf/am08-complete\_22Feb09.pdf. \\
+\\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{20cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\end{problem}
+
+
+\newpage
+\begin{problem}{}
+(10 points) 
+Work out Problem 1 in the Exercises of Chapter 9 in [LS15].
+
+\noindent
+[LS15] Edward A. Lee and Sanjit A. Seshia, Introduction to Embedded Systems, A Cyber-Physical Systems Approach, Second Edition, http://LeeSeshia.org, ISBN 978-1-312-42740-2, 2015. \\
+\\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{22cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\newpage
+\ \\
+\begin{minipage}{1\textwidth}
+		\rectangle{\linewidth}{24cm}
+		% \ruledrectangle{7}
+\end{minipage}
+\end{problem}
+
+
+\end{document}

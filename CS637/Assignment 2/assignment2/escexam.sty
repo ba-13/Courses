@@ -1,0 +1,100 @@
+%% escexam.sty v20180110
+%% (c) 2018 Purushottam Kar (Indian Institute of Technology Kanpur)
+%% 
+%% Draws upon style elements from 
+%% the style file for the course CS773 by Purushottam Kar
+%% the style file for the course CS289 by Alexander Sherstov
+%% the class file for the publication NOW FnT(R)-ML by Neal Parikh
+%% the style file for the proceedings of the NIPS 2015 conference
+
+\usepackage{esc}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{pgffor}
+\usepackage{listings}
+\usepackage{xargs}
+
+\usepackage[a4paper, portrait, margin=0.5cm]{geometry}
+
+\setlength{\headsep}{2ex}
+
+\newcommand{\tfbox}{\fbox{\vphantom{$\frac{\frac{}{}}{\frac{}{}}$}\hphantom{\hspace*{0.2in}}}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Name}: \fbox{\vphantom{$\frac{\frac{}{}}{\frac{}{}}$}\hphantom{\hspace*{0.43\textwidth}}} \\ $\ \ $ \\ $\underset{\text{e.g. 170001}}{\text{\textbf{Roll No}}}$: \fbox{\vphantom{$\frac{\frac{}{}}{\frac{}{}}$}\hphantom{\hspace*{0.2\textwidth}}} \hspace*{1ex} $\underset{\text{e.g. CSE}}{\textbf{Dept.}}$: \fbox{\vphantom{$\frac{\frac{}{}}{\frac{}{}}$}\hphantom{\hspace*{0.1\textwidth}}} \hspace*{1ex} 
+%$\underset{\text{e.g. A4}}{\textbf{Sect.}}$: \fbox{\vphantom{$\frac{\frac{}{}}{\frac{}{}}$}\hphantom{\hspace*{0.07\textwidth}}}
+\\}
+\fancyhead[R]{{\sffamily\bfseries Indian Institute of Technology Kanpur} \\ {\sffamily\bfseries CS637 Embedded and Cyber-Physical Systems} \\ {\sffamily\bfseries\examname} \\ {\it Deadline:} \thedate\\}
+\fancyhead[C]{Page \thepage \\ $\ \ $ \\ $\ \ $ \\ $\ \ $ \\ $\ \ $ \\ }
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newtheorem{problem}{Problem}
+
+\newcommand{\rectangle}[3][0pt]{{%
+  \fboxsep=-\fboxrule\sbox0{}\wd0=#2\ht0=#3\dp0=#1\relax\fbox{\box0}}}
+  
+\def\answerbar{\vskip2ex\noindent\rule{0.95\linewidth}{0.75pt}}
+\def\codeanswerbar{\vskip2ex\hskip2ex\rule{0.95\linewidth}{0.75pt}}
+
+\newcommand{\answerbars}[1]{\foreach \n in {1,...,#1}{\answerbar}}
+\newcommand{\codeanswerbars}[1]{\foreach \n in {1,...,#1}{\codeanswerbar}}
+  
+\newcommand{\ruledrectangle}[1]{\framebox{\begin{minipage}{0.95\linewidth}\vskip2ex\codeanswerbars{#1}\end{minipage}}}  
+
+\newenvironment{escproblem}[2][]
+{\begin{problem}[{#1}: {#2}\xspace marks]}
+{\end{problem}}
+
+\newenvironment{solution}%
+{\paragraph{Solution:}}
+{\par\noindent%
+\ignorespacesafterend}
+
+\lstset{ %
+ % basicstyle=\sffamily\normalsize,        % the size of the fonts that are used for the code
+  basicstyle=\ttfamily\normalsize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\itshape,    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bfseries,		       % keyword style
+  language=C,                 % the language of the code
+  morekeywords={},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=10pt,                   % how far the line-numbers are from the code
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+}
+
+% The big fancy header
+\newcommand{\makeheader}[5]{
+	\newcommand{\thedate}{#2}
+	\setcounter{escseries}{#1}
+	\newcommand{\examname}{#4}
+	\newcommand{\boxwidth}{#5}
+	\noindent
+	\parbox{0.7\textwidth}{
+		%{\sffamily\bfseries Indian Institute of Technology Kanpur}\\
+		%{\sffamily\bfseries ESC101 Fundamentals of Computing}\\
+		%\rule{0mm}{6mm}%
+		%{\it Instructor:} {Indranil Saha}\\
+		%{\it Total:} {#3} marks
+	}
+\noindent{\bf Instructions}: \hfill {\sffamily\bfseries\Large {{\it Total:} {#3} marks}}
+
+\def\toptitlebar{\hrule height1pt\vskip .25in\vskip-\parskip}
+
+%\hsize\textwidth\linewidth\hsize
+\vskip 0.1in
+%\toptitlebar
+}

@@ -1,0 +1,3 @@
+[submodule "CS637/MPC_AutoLanding"]
+	path = CS637/MPC_AutoLanding
+	url = git@github.com:rrustagi20/MPC_AutoLanding.git
