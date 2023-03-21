@@ -1,0 +1,41 @@
+\hypertarget{stack_8c_source}{}\doxysection{stack.\+c}
+\mbox{\hyperlink{stack_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{linked__list_8h}{linked\_list.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00003}\mbox{\hyperlink{stack_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{00003}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{stack_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{push\_stack}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head,\ \textcolor{keywordtype}{int}\ val)}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00005}00005\ \ \ \ \ head\ =\ \mbox{\hyperlink{linked__list_8c_a24d34cf1617084491035ce63c05eaa4f}{insert\_DLLNode\_atHead}}(head,\ val);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00006}00006\ \ \ \ \ \textcolor{keywordflow}{return}\ head;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00009}\mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{00009}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00013}00013\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Stack\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)NULL;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00016}00016\ \ \ \ \ head\ =\ \mbox{\hyperlink{linked__list_8c_af874d464ca217817070f10bc7ae20aea}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ head;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00020}\mbox{\hyperlink{stack_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00020}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{stack_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *top\ =\ \mbox{\hyperlink{stack_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{push\_stack}}(NULL,\ 1);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00023}00023\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{push\_stack}}(top,\ 2);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00024}00024\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{push\_stack}}(top,\ 3);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00025}00025\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{push\_stack}}(top,\ 4);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{linked__list_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00027}00027\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00028}00028\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{linked__list_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00030}00030\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00031}00031\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00032}00032\ \ \ \ \ top\ =\ \mbox{\hyperlink{stack_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00033}00033\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Trying\ printing:"{}});}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{linked__list_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{stack_8c_source_l00036}00036\ \}}
+
+\end{DoxyCode}

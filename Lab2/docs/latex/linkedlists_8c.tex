@@ -1,0 +1,383 @@
+\hypertarget{linkedlists_8c}{}\doxysection{linkedlists.\+c File Reference}
+\label{linkedlists_8c}\index{linkedlists.c@{linkedlists.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structDLLNode}{DLLNode}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structDLLNode}{DLLNode}} \mbox{\hyperlink{linkedlists_8c_ac6f2730837a0c45f7f337cf76c4aabb2}{DLLNode}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$ \mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{create\+\_\+\+DLLNode}} (int val)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}{insert\+\_\+\+DLLNode\+\_\+at\+Tail}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$tail, int val)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_a4662f704020cf856aac568669d22c488}{insert\+\_\+\+DLLNode\+\_\+at\+Head}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head, int val)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{delete\+\_\+\+DLLNode\+\_\+at\+Head}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_acfdd73f514102aad8bf8188cf586a71b}{delete\+\_\+\+DLLNode\+\_\+at\+Tail}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$tail)
+\item 
+int \mbox{\hyperlink{linkedlists_8c_a68bda4fd4b5cf9286ab54083063ffb37}{delete\+\_\+\+DLLNode}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head, int val)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\+\_\+\+DLL\+\_\+forward}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$head)
+\begin{DoxyCompactList}\small\item\em Traverses the list, forward. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{linkedlists_8c_a8b3527a52e5142a89cd054fcb020550a}{traverse\+\_\+\+DLL\+\_\+backward}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$tail)
+\begin{DoxyCompactList}\small\item\em Traverses the list, forward. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\+\_\+stack}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head, int val)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}{pop\+\_\+stack}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\+\_\+queue}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head, \mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$tail, int val)
+\item 
+void \mbox{\hyperlink{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}{de\+\_\+queue}} (\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$head)
+\item 
+int \mbox{\hyperlink{linkedlists_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{linkedlists_8c_ac6f2730837a0c45f7f337cf76c4aabb2}\label{linkedlists_8c_ac6f2730837a0c45f7f337cf76c4aabb2}} 
+\index{linkedlists.c@{linkedlists.c}!DLLNode@{DLLNode}}
+\index{DLLNode@{DLLNode}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{DLLNode}{DLLNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structDLLNode}{DLLNode}} \mbox{\hyperlink{structDLLNode}{DLLNode}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{linkedlists_8c_a616ba565c056033de4088357153ce172}\label{linkedlists_8c_a616ba565c056033de4088357153ce172}} 
+\index{linkedlists.c@{linkedlists.c}!create\_DLLNode@{create\_DLLNode}}
+\index{create\_DLLNode@{create\_DLLNode}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{create\_DLLNode()}{create\_DLLNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$ create\+\_\+\+DLLNode (\begin{DoxyParamCaption}\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00010}{10}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDLLNode}{DLLNode}}));}
+\DoxyCodeLine{00013\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ =\ val;}
+\DoxyCodeLine{00014\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ NULL;}
+\DoxyCodeLine{00015\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ NULL;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{return}\ newNode;}
+\DoxyCodeLine{00017\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}\label{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}} 
+\index{linkedlists.c@{linkedlists.c}!de\_queue@{de\_queue}}
+\index{de\_queue@{de\_queue}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{de\_queue()}{de\_queue()}}
+{\footnotesize\ttfamily void de\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00125}{125}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ ==\ NULL)}
+\DoxyCodeLine{00128\ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Queue\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{00133\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_a68bda4fd4b5cf9286ab54083063ffb37}\label{linkedlists_8c_a68bda4fd4b5cf9286ab54083063ffb37}} 
+\index{linkedlists.c@{linkedlists.c}!delete\_DLLNode@{delete\_DLLNode}}
+\index{delete\_DLLNode@{delete\_DLLNode}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{delete\_DLLNode()}{delete\_DLLNode()}}
+{\footnotesize\ttfamily int delete\+\_\+\+DLLNode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00057}{57}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ *head;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ ==\ val)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr\ ==\ *head)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *head\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ free(curr);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00074\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}\label{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}} 
+\index{linkedlists.c@{linkedlists.c}!delete\_DLLNode\_atHead@{delete\_DLLNode\_atHead}}
+\index{delete\_DLLNode\_atHead@{delete\_DLLNode\_atHead}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{delete\_DLLNode\_atHead()}{delete\_DLLNode\_atHead()}}
+{\footnotesize\ttfamily void delete\+\_\+\+DLLNode\+\_\+at\+Head (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00039}{39}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newHead\ =\ (*head)-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (newHead\ !=\ NULL)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ newHead-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ NULL;}
+\DoxyCodeLine{00044\ \ \ \ \ free(*head);}
+\DoxyCodeLine{00045\ \ \ \ \ *head\ =\ newHead;}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_acfdd73f514102aad8bf8188cf586a71b}\label{linkedlists_8c_acfdd73f514102aad8bf8188cf586a71b}} 
+\index{linkedlists.c@{linkedlists.c}!delete\_DLLNode\_atTail@{delete\_DLLNode\_atTail}}
+\index{delete\_DLLNode\_atTail@{delete\_DLLNode\_atTail}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{delete\_DLLNode\_atTail()}{delete\_DLLNode\_atTail()}}
+{\footnotesize\ttfamily void delete\+\_\+\+DLLNode\+\_\+at\+Tail (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{tail }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00048}{48}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newTail\ =\ (*tail)-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (newTail\ !=\ NULL)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ newTail-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ NULL;}
+\DoxyCodeLine{00053\ \ \ \ \ free(*tail);}
+\DoxyCodeLine{00054\ \ \ \ \ *tail\ =\ newTail;}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}\label{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}} 
+\index{linkedlists.c@{linkedlists.c}!en\_queue@{en\_queue}}
+\index{en\_queue@{en\_queue}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{en\_queue()}{en\_queue()}}
+{\footnotesize\ttfamily void en\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head,  }\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{tail,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00115}{115}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}{insert\_DLLNode\_atTail}}(tail,\ val);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ head\ included\ for\ the\ case\ when\ queue\ is\ empty}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ ==\ NULL)}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ *head\ =\ *tail;}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_a4662f704020cf856aac568669d22c488}\label{linkedlists_8c_a4662f704020cf856aac568669d22c488}} 
+\index{linkedlists.c@{linkedlists.c}!insert\_DLLNode\_atHead@{insert\_DLLNode\_atHead}}
+\index{insert\_DLLNode\_atHead@{insert\_DLLNode\_atHead}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{insert\_DLLNode\_atHead()}{insert\_DLLNode\_atHead()}}
+{\footnotesize\ttfamily void insert\+\_\+\+DLLNode\+\_\+at\+Head (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00029}{29}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ \mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{create\_DLLNode}}(val);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ (*head);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ !=\ NULL)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ (*head)-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ newNode;}
+\DoxyCodeLine{00036\ \ \ \ \ *head\ =\ newNode;}
+\DoxyCodeLine{00037\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}\label{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}} 
+\index{linkedlists.c@{linkedlists.c}!insert\_DLLNode\_atTail@{insert\_DLLNode\_atTail}}
+\index{insert\_DLLNode\_atTail@{insert\_DLLNode\_atTail}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{insert\_DLLNode\_atTail()}{insert\_DLLNode\_atTail()}}
+{\footnotesize\ttfamily void insert\+\_\+\+DLLNode\+\_\+at\+Tail (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{tail,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00019}{19}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ \mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{create\_DLLNode}}(val);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ (*tail);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*tail)\ !=\ NULL)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ (*tail)-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ newNode;}
+\DoxyCodeLine{00026\ \ \ \ \ *tail\ =\ newNode;}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{linkedlists_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{linkedlists.c@{linkedlists.c}!main@{main}}
+\index{main@{main}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00135}{135}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00136\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Queue\ test:\(\backslash\)n"{}});}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head\ =\ NULL,\ *tail\ =\ NULL;}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 1);}
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 2);}
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 3);}
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 3);}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 3);}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}{de\_queue}}(\&head);}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Stack\ test:\(\backslash\)n"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *top\ =\ NULL;}
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 1);}
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 2);}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 2);}
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 3);}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}{pop\_stack}}(\&top);}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00158\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}\label{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}} 
+\index{linkedlists.c@{linkedlists.c}!pop\_stack@{pop\_stack}}
+\index{pop\_stack@{pop\_stack}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{pop\_stack()}{pop\_stack()}}
+{\footnotesize\ttfamily void pop\+\_\+stack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00104}{104}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ ==\ NULL)}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Stack\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{00112\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}\label{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}} 
+\index{linkedlists.c@{linkedlists.c}!push\_stack@{push\_stack}}
+\index{push\_stack@{push\_stack}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{push\_stack()}{push\_stack()}}
+{\footnotesize\ttfamily void push\+\_\+stack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$$\ast$}]{head,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00099}{99}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a4662f704020cf856aac568669d22c488}{insert\_DLLNode\_atHead}}(head,\ val);}
+\DoxyCodeLine{00102\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_a8b3527a52e5142a89cd054fcb020550a}\label{linkedlists_8c_a8b3527a52e5142a89cd054fcb020550a}} 
+\index{linkedlists.c@{linkedlists.c}!traverse\_DLL\_backward@{traverse\_DLL\_backward}}
+\index{traverse\_DLL\_backward@{traverse\_DLL\_backward}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{traverse\_DLL\_backward()}{traverse\_DLL\_backward()}}
+{\footnotesize\ttfamily void traverse\+\_\+\+DLL\+\_\+backward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$}]{tail }\end{DoxyParamCaption})}
+
+
+
+Traverses the list, forward. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00087}{87}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ tail;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d-\/>"{}},\ curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00096\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}\label{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}} 
+\index{linkedlists.c@{linkedlists.c}!traverse\_DLL\_forward@{traverse\_DLL\_forward}}
+\index{traverse\_DLL\_forward@{traverse\_DLL\_forward}!linkedlists.c@{linkedlists.c}}
+\doxysubsubsection{\texorpdfstring{traverse\_DLL\_forward()}{traverse\_DLL\_forward()}}
+{\footnotesize\ttfamily void traverse\+\_\+\+DLL\+\_\+forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDLLNode}{DLLNode}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Traverses the list, forward. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{linkedlists_8c_source_l00076}{76}} of file \mbox{\hyperlink{linkedlists_8c_source}{linkedlists.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ head;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d-\/>"{}},\ curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00085\ \}}
+
+\end{DoxyCode}
