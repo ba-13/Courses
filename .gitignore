@@ -1,0 +1,4 @@
+bin
+obj
+_*.txt
+*.out

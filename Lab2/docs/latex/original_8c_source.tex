@@ -1,0 +1,136 @@
+\hypertarget{original_8c_source}{}\doxysection{original.\+c}
+\mbox{\hyperlink{original_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00004}00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDLLNode}{DLLNode}}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}},\ *\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00008}\mbox{\hyperlink{original_8c_ac6f2730837a0c45f7f337cf76c4aabb2}{00008}}\ \}\ \mbox{\hyperlink{structDLLNode}{DLLNode}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00010}\mbox{\hyperlink{original_8c_ade27527160d04ee2020af83031fede83}{00010}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_ade27527160d04ee2020af83031fede83}{insert\_DLLNode\_atTail}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDLLNode}{DLLNode}}));}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00013}00013\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ =\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ newNode-\/>prev\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00015}00015\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00017}00017\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ tail;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (tail\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ tail-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ newNode;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ newNode;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00024}\mbox{\hyperlink{original_8c_a24d34cf1617084491035ce63c05eaa4f}{00024}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_a24d34cf1617084491035ce63c05eaa4f}{insert\_DLLNode\_atHead}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDLLNode}{DLLNode}}));}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00027}00027\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ =\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00028}00028\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ newNode-\/>next\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00031}00031\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ head;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ head-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ newNode;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ newNode;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00038}\mbox{\hyperlink{original_8c_af874d464ca217817070f10bc7ae20aea}{00038}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_af874d464ca217817070f10bc7ae20aea}{delete\_DLLNode\_atHead}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newHead\ =\ head-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (newHead\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ newHead-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00043}00043\ \ \ \ \ free(head);}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{return}\ newHead;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00047}\mbox{\hyperlink{original_8c_a49761546f1ac2fd76469592ab5956bbe}{00047}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_a49761546f1ac2fd76469592ab5956bbe}{delete\_DLLNode\_atTail}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00048}00048\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newTail\ =\ tail-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (newTail\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ newTail-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00052}00052\ \ \ \ \ free(tail);}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ newTail;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00056}\mbox{\hyperlink{original_8c_a022d34b5fea688c91eff51252279e282}{00056}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{original_8c_a022d34b5fea688c91eff51252279e282}{delete\_DLLNode}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00057}00057\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ head;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ ==\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ free(curr);}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00073}\mbox{\hyperlink{original_8c_a22b8ce8905a1bfc7533e958747e2f43f}{00073}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{original_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ head;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d-\/>"{}},\ curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00081}00081\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00085}\mbox{\hyperlink{original_8c_ac887133f5ef861e06a97e8cfbbd82688}{00085}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{original_8c_ac887133f5ef861e06a97e8cfbbd82688}{traverse\_DLL\_backward}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00086}00086\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ tail;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d-\/>"{}},\ curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00093}00093\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00097}00097\ \textcolor{comment}{/*\ Stack\ implementation\ */}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00098}\mbox{\hyperlink{original_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{00098}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_a6f8e60cacf8c0d6735f5e8ddc5657f48}{push\_stack}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00099}00099\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00100}00100\ \ \ \ \ head\ =\ \mbox{\hyperlink{original_8c_a24d34cf1617084491035ce63c05eaa4f}{insert\_DLLNode\_atHead}}(head,\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ head;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00104}\mbox{\hyperlink{original_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{00104}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_a1db6c61f6180f6ee0a468c510d6b5e2b}{pop\_stack}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Stack\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)NULL;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00111}00111\ \ \ \ \ head\ =\ \mbox{\hyperlink{original_8c_af874d464ca217817070f10bc7ae20aea}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{return}\ head;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00115}00115\ \textcolor{comment}{/*\ Queue\ Implementation\ */}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00116}\mbox{\hyperlink{original_8c_aef06832ce26e751039e802982d510f57}{00116}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_aef06832ce26e751039e802982d510f57}{en\_queue}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00117}00117\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00118}00118\ \ \ \ \ tail\ =\ \mbox{\hyperlink{original_8c_ade27527160d04ee2020af83031fede83}{insert\_DLLNode\_atTail}}(tail,\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{return}\ tail;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00122}\mbox{\hyperlink{original_8c_ab03bf3308b0621ce1d23584c7d783f40}{00122}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{original_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00125}00125\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Queue\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)NULL;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00129}00129\ \ \ \ \ head\ =\ \mbox{\hyperlink{original_8c_af874d464ca217817070f10bc7ae20aea}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{return}\ head;}
+\DoxyCodeLine{\Hypertarget{original_8c_source_l00131}00131\ \}}
+
+\end{DoxyCode}

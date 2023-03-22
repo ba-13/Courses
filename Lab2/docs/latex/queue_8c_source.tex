@@ -1,0 +1,43 @@
+\hypertarget{queue_8c_source}{}\doxysection{queue.\+c}
+\mbox{\hyperlink{queue_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{linked__list_8h}{linked\_list.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00003}\mbox{\hyperlink{queue_8c_aef06832ce26e751039e802982d510f57}{00003}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{queue_8c_aef06832ce26e751039e802982d510f57}{en\_queue}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail,\ \textcolor{keywordtype}{int}\ val)}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00005}00005\ \ \ \ \ tail\ =\ \mbox{\hyperlink{linked__list_8c_ade27527160d04ee2020af83031fede83}{insert\_DLLNode\_atTail}}(tail,\ val);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00006}00006\ \ \ \ \ \textcolor{keywordflow}{return}\ tail;}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00009}\mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{00009}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00013}00013\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Queue\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)NULL;}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00016}00016\ \ \ \ \ head\ =\ \mbox{\hyperlink{linked__list_8c_af874d464ca217817070f10bc7ae20aea}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ head;}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00020}\mbox{\hyperlink{queue_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00020}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{queue_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail;}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00023}00023\ \ \ \ \ tail\ =\ \mbox{\hyperlink{queue_8c_aef06832ce26e751039e802982d510f57}{en\_queue}}(NULL,\ 1);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head\ =\ tail;}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00025}00025\ \ \ \ \ tail\ =\ \mbox{\hyperlink{queue_8c_aef06832ce26e751039e802982d510f57}{en\_queue}}(tail,\ 2);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00026}00026\ \ \ \ \ tail\ =\ \mbox{\hyperlink{queue_8c_aef06832ce26e751039e802982d510f57}{en\_queue}}(tail,\ 3);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00027}00027\ \ \ \ \ tail\ =\ \mbox{\hyperlink{queue_8c_aef06832ce26e751039e802982d510f57}{en\_queue}}(tail,\ 4);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{linked__list_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00029}00029\ \ \ \ \ head\ =\ \mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00030}00030\ \ \ \ \ head\ =\ \mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{linked__list_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00032}00032\ \ \ \ \ head\ =\ \mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00033}00033\ \ \ \ \ head\ =\ \mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00034}00034\ \ \ \ \ head\ =\ \mbox{\hyperlink{queue_8c_ab03bf3308b0621ce1d23584c7d783f40}{de\_queue}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00035}00035\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Trying\ printing:"{}});}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{linked__list_8c_a22b8ce8905a1bfc7533e958747e2f43f}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{queue_8c_source_l00038}00038\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,163 @@
+\hypertarget{linkedlists_8c_source}{}\doxysection{linkedlists.\+c}
+\mbox{\hyperlink{linkedlists_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00004}00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDLLNode}{DLLNode}}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}},\ *\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00008}\mbox{\hyperlink{linkedlists_8c_ac6f2730837a0c45f7f337cf76c4aabb2}{00008}}\ \}\ \mbox{\hyperlink{linkedlists_8c_ac6f2730837a0c45f7f337cf76c4aabb2}{DLLNode}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00010}\mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{00010}}\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *\mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{create\_DLLNode}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ (\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDLLNode}{DLLNode}}));}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00013}00013\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ =\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00014}00014\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00015}00015\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00016}00016\ \ \ \ \ \textcolor{keywordflow}{return}\ newNode;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00019}\mbox{\hyperlink{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}{00019}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}{insert\_DLLNode\_atTail}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **tail,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ \mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{create\_DLLNode}}(\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00023}00023\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ (*tail);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*tail)\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ (*tail)-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ newNode;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00026}00026\ \ \ \ \ *tail\ =\ newNode;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00029}\mbox{\hyperlink{linkedlists_8c_a4662f704020cf856aac568669d22c488}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_a4662f704020cf856aac568669d22c488}{insert\_DLLNode\_atHead}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newNode\ =\ \mbox{\hyperlink{linkedlists_8c_a616ba565c056033de4088357153ce172}{create\_DLLNode}}(\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00033}00033\ \ \ \ \ newNode-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ (*head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ (*head)-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ newNode;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00036}00036\ \ \ \ \ *head\ =\ newNode;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00039}\mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{00039}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{delete\_DLLNode\_atHead}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newHead\ =\ (*head)-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (newHead\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ newHead-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00044}00044\ \ \ \ \ free(*head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00045}00045\ \ \ \ \ *head\ =\ newHead;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00048}\mbox{\hyperlink{linkedlists_8c_acfdd73f514102aad8bf8188cf586a71b}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_acfdd73f514102aad8bf8188cf586a71b}{delete\_DLLNode\_atTail}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **tail)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *newTail\ =\ (*tail)-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (newTail\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ newTail-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00053}00053\ \ \ \ \ free(*tail);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00054}00054\ \ \ \ \ *tail\ =\ newTail;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00057}\mbox{\hyperlink{linkedlists_8c_a68bda4fd4b5cf9286ab54083063ffb37}{00057}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{linkedlists_8c_a68bda4fd4b5cf9286ab54083063ffb37}{delete\_DLLNode}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00058}00058\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ *head;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}}\ ==\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr\ ==\ *head)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *head\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}}-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}}\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ free(curr);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00076}\mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{00076}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ head;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d-\/>"{}},\ curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_aa178f5480613b2df8f78941f56a01648}{next}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00084}00084\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00087}\mbox{\hyperlink{linkedlists_8c_a8b3527a52e5142a89cd054fcb020550a}{00087}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_a8b3527a52e5142a89cd054fcb020550a}{traverse\_DLL\_backward}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ *tail)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *curr\ =\ tail;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00091}00091\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d-\/>"{}},\ curr-\/>\mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{structDLLNode_a24eb43c110fbfae517c8858d45de0726}{prev}};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00095}00095\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00098}00098\ \textcolor{comment}{/*\ Stack\ implementation\ */}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00099}\mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{00099}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00100}00100\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00101}00101\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a4662f704020cf856aac568669d22c488}{insert\_DLLNode\_atHead}}(head,\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00104}\mbox{\hyperlink{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}{00104}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}{pop\_stack}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Stack\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00111}00111\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00114}00114\ \textcolor{comment}{/*\ Queue\ Implementation\ */}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00115}\mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{00115}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head,\ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ **tail,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}})}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00116}00116\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_aa536f4b9b23690636cda26bfbe44db3c}{insert\_DLLNode\_atTail}}(tail,\ \mbox{\hyperlink{structDLLNode_a8c009817c96bc9f0218a48b7c3dfa285}{val}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ head\ included\ for\ the\ case\ when\ queue\ is\ empty}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ *head\ =\ *tail;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00125}\mbox{\hyperlink{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}{00125}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}{de\_queue}}(\mbox{\hyperlink{structDLLNode}{DLLNode}}\ **head)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00126}00126\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*head)\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00128}00128\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Queue\ is\ empty\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00132}00132\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad373f5d8586594c0caf2c8d0f4787893}{delete\_DLLNode\_atHead}}(head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00135}\mbox{\hyperlink{linkedlists_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00135}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{linkedlists_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00136}00136\ \{}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00137}00137\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Queue\ test:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00138}00138\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *head\ =\ NULL,\ *tail\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00139}00139\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 1);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00140}00140\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 2);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00141}00141\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 3);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 3);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00143}00143\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a3dfad507022d6338295f551127a8f79f}{en\_queue}}(\&head,\ \&tail,\ 3);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00144}00144\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00145}00145\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_adb58617be931299d61fd51f9352bf30b}{de\_queue}}(\&head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00146}00146\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(head);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00148}00148\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Stack\ test:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00149}00149\ \ \ \ \ \mbox{\hyperlink{structDLLNode}{DLLNode}}\ *top\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00150}00150\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 1);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00151}00151\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 2);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 2);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00153}00153\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_a7af8c0f8c3ebd465e918e33f35bd2814}{push\_stack}}(\&top,\ 3);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00155}00155\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_abb4dd564f0d14ac1b384ca697d6c7be4}{pop\_stack}}(\&top);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{linkedlists_8c_ad7ffb52d26c6ca42e4a848e4a053313b}{traverse\_DLL\_forward}}(top);}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{linkedlists_8c_source_l00158}00158\ \}}
+
+\end{DoxyCode}
