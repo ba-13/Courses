@@ -19,11 +19,18 @@ int main(int argc, char **argv)
     for (int i = 1; i < n; i++)
         root = insert_node(root, arr[i]);
 
-    printf("Minimum numbers:\n");
+    printf("Minimum %d numbers:\n", n / 5);
     for (int i = 0; i < n / 5; i++)
     {
+        int valid = check_valid(root);
         node *tmp = minimum_node(root);
         printf("%d ", tmp->val);
+        if (valid == 0)
+        {
+            printf("\nInvalid!\n");
+            printLevelOrder(root);
+            break;
+        }
         delete_node(root, tmp);
     }
     printf("\n");
