@@ -1,0 +1,5 @@
+# Lab Assignment 10
+
+1. Implement Kruskal's Algorithm for finding Minimum Spanning Tree. This also involves implementing disjoint union-find (with path compression). Test your program for a graph (of your choice) having at least 6 vertices, number of edges should be at least twice the number of vertices. Do not hard code the graph. Your algorithm should also work (without any modification) on the graph suggested by TA. You may use sort routines of previous lab.
+
+2. Implement Prim's Algorithm for MST using r-way heaps. You are free to use routines of Lab 8. Test your program for a graph (of your choice) having at least 6 vertices, number of edges should be at least twice the number of vertices. Do not hard code the graph. Your algorithm should also work (without any modification) on the graph suggested by TA.  Choose r=2+|E|/|V|

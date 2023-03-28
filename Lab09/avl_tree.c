@@ -481,6 +481,27 @@ void delete_rank_update_(node *t, node *s, node *p)
     }
 }
 
+int check_valid(node *root)
+{
+    if (root->left->rank == 0 || root->right->rank == 0)
+    {
+        if (root->rank == 1)
+            return 1;
+        else
+            return 0;
+    }
+    if (root->parent != NULL)
+    {
+        if (root->parent->rank == root->rank || root->parent->rank == root->rank + 1)
+            ;
+        else
+        {
+            return 0;
+        }
+    }
+    return check_valid(root->left) || check_valid(root->right);
+}
+
 void delete_node(node *root, node *n)
 {
     node *x = delete_bst_tree(&root, n);
@@ -494,7 +515,7 @@ case1:;
     int r = p->rank;
     if (r - x->rank > 2)
     {
-        printf("Weirdly enough, rank between transplanted and original parent is greater than 2\n");
+        printf("\nWeirdly enough, rank between transplanted and original parent is greater than 2\n");
         return;
     }
 

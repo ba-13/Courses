@@ -8,7 +8,6 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                "avl_tree.c", // for Lab9 only
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

@@ -3,7 +3,10 @@
         "*.rmd": "markdown",
         "shared.h": "c",
         "time.h": "c",
-        "avl_tree.h": "c"
+        "avl_tree.h": "c",
+        "kruskal.h": "c",
+        "rway_heaps.h": "c",
+        "graph.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

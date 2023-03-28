@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
+typedef struct node
+{
     int val;
     int rank;
     struct node *parent;
@@ -47,6 +48,8 @@ node *trinode(node *x, node *p, node *g);
 node *search_node(node *root, int val);
 
 node *insert_node(node *root, int val);
+
+int check_valid(node *root);
 
 void delete_rank_update_(node *t, node *s, node *p);
 
