@@ -1,21 +1,25 @@
 #include <stdlib.h>
 
-typedef struct node {
-    int destination, weight;
-    struct node *next;
-} node;
+typedef struct AdjListNode
+{
+    int destination;
+    int weight;
+    struct AdjListNode *next;
+} AdjListNode;
 
-typedef struct list {
-    node *head;
-} list;
+typedef struct AdjList
+{
+    struct AdjListNode *head;
+} AdjList;
 
-typedef struct graph {
+typedef struct Graph
+{
     int V;
-    list *array;
-} graph;
+    struct AdjList *array;
+} Graph;
 
-node *create_adjacency_node(int destination, int weight);
+AdjListNode *create_AdjListNode(int dest, int weight);
 
-graph *create_graph(int V);
+Graph *create_Graph(int V);
 
-void add_edge(graph *G, int src, int dst, int wt);
+void insert_edge(Graph *graph, int src, int dest, int weight);

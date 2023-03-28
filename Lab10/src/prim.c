@@ -11,70 +11,61 @@ void edges_to_adjacency_matrix(edge *edges, int n, int **mat)
     }
 }
 
-void printArr(int *arr, int n)
+void print_mst(int *arr, int *keys, int n)
 {
     for (int i = 1; i < n; ++i)
-        printf("%d - %d\n", arr[i], i);
+        printf("%d --(%d)-- %d\n", arr[i], keys[i], i);
 }
 
-void prim(graph *G)
+void prim(Graph *G)
 {
     int V = G->V;
-    int parent[V];
-    int key[V];
+    int parent[V]; // would store the tree of MST once completed
+    int key[V]; // stores the current distance from MST set
 
-    struct minheap *minHeap = create_minheap(V);
+    // initialise minHeap
+    MinHeap *minHeap = create_MinHeap(V);
 
-    // Initialize min heap with all vertices. Key value of
-    // all vertices (except 0th vertex) is initially
-    // infinite
     for (int v = 1; v < V; ++v)
     {
         parent[v] = -1;
         key[v] = INFTY;
-        minHeap->heap[v] = create_minheap_node(v, key[v]);
-        minHeap->position[v] = v;
+        minHeap->heap[v] = create_MinHeapNode(v, key[v]);
+        minHeap->position[v] = v; // stores the position of vertex v in minHeap
     }
 
-    // Make key value of 0th vertex as 0 so that it
-    // is extracted first
     key[0] = 0;
-    minHeap->heap[0] = create_minheap_node(0, key[0]);
+    // have to initialise the root as the minimum distance vertex
+    minHeap->heap[0] = create_MinHeapNode(0, key[0]);
     minHeap->position[0] = 0;
 
-    // Initially size of min heap is equal to V
     minHeap->size = V;
 
-    // In the following loop, min heap contains all nodes
-    // not yet added to MST.
     while (minHeap->size != 0)
     {
-        // Extract the vertex with minimum key value
-        minheap_node *minHeapNode = deleteMin(minHeap);
-        int u = minHeapNode
-                    ->v; // Store the extracted vertex number
+        // deleteMin done on basis of key value of nodes
+        MinHeapNode *minHeapNode = deleteMin(minHeap);
+        // vertex number
+        int u = minHeapNode->v;
 
-        // Traverse through all adjacent vertices of u (the
-        // extracted vertex) and update their key values
-        struct node *pCrawl = G->array[u].head;
-        while (pCrawl != NULL)
+        AdjListNode *uNeighbors = G->array[u].head;
+        while (uNeighbors != NULL) // iterating through u's neighbors
         {
-            int v = pCrawl->destination;
+            int v = uNeighbors->destination; // it's neighbor
 
-            // If v is not yet included in MST and weight of
-            // u-v is less than key value of v, then update
-            // key value and parent of v
-            if (isInMinHeap(minHeap, v) && pCrawl->weight < key[v])
+            // check if v has not been visited, and it's key greater than the
+            // edge to v
+            if (isInMinHeap(minHeap, v) && uNeighbors->weight < key[v])
             {
-                key[v] = pCrawl->weight;
+                key[v] = uNeighbors->weight;
                 parent[v] = u;
                 reduceKey(minHeap, v, key[v]);
             }
-            pCrawl = pCrawl->next;
+            uNeighbors = uNeighbors->next;
         }
     }
 
-    printArr(parent, V);
+    print_mst(parent, key, V);
 }
 
 int main(int argc, char **argv)
@@ -92,10 +83,10 @@ int main(int argc, char **argv)
                     {5, 6, 8},
                     {4, 6, 3}};
 
-    graph *G = create_graph(m);
+    Graph *G = create_Graph(m);
     for (int i = 0; i < n; i++)
     {
-        add_edge(G, edges[i].n1, edges[i].n2, edges[i].w);
+        insert_edge(G, edges[i].n1, edges[i].n2, edges[i].w);
     }
 
     prim(G);

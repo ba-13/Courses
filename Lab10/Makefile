@@ -6,7 +6,7 @@ SRC		:= ./src
 SRCS	:= $(wildcard $(SRC)/*.c)
 INCLUDES:= $(wildcard $(INCLUDE)/*.h)
 OBJS	:= $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
-CFLAGS	:= -O4 -g -Wall -I$(INCLUDE)
+CFLAGS	:= -g -Wall -I$(INCLUDE)
 LDLIBS 	:= -lm
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCLUDES)
@@ -21,4 +21,4 @@ prim: $(OBJ)/prim.o $(OBJ)/rway_heaps.o $(OBJ)/graph.o
 	$(CC) -o $(BIN)/$@ $^ $(CFLAGS)
 
 clean:
-	rd $(OBJ) $(BIN)
+	rm -rf $(OBJ) $(BIN)

@@ -1,10 +1,11 @@
 #include "rway_heaps.h"
 
-void swap_(minheap_node **posA, minheap_node **posB)
+void swap_MinHeapNode(MinHeapNode **a,
+                     MinHeapNode **b)
 {
-    minheap_node *tmp = *posA;
-    *posA = *posB;
-    *posB = tmp;
+    MinHeapNode *t = *a;
+    *a = *b;
+    *b = t;
 }
 
 int parent_(int idx)
@@ -22,27 +23,34 @@ int child_(int idx, int childNumber)
     return R * idx + childNumber;
 }
 
-minheap_node *create_minheap_node(int v, int key)
+MinHeapNode *create_MinHeapNode(int v, int key)
 {
-    minheap_node *tmp = (minheap_node *)malloc(
-        sizeof(minheap_node));
-    tmp->v = v;
-    tmp->key = key;
-    return tmp;
+    MinHeapNode *minHeapNode = (MinHeapNode *)malloc(
+        sizeof(MinHeapNode));
+    minHeapNode->v = v;
+    minHeapNode->key = key;
+    return minHeapNode;
 }
 
-minheap *create_minheap(int capacity)
+MinHeap *create_MinHeap(int capacity)
 {
-    minheap *minHeap = (minheap *)malloc(sizeof(minheap));
+    MinHeap *minHeap = (MinHeap *)malloc(sizeof(MinHeap));
     minHeap->position = (int *)malloc(capacity * sizeof(int));
     minHeap->size = 0;
     minHeap->capacity = capacity;
-    minHeap->heap = (minheap_node **)malloc(
-        capacity * sizeof(minheap_node *));
+    minHeap->heap = (MinHeapNode **)malloc(
+        capacity * sizeof(MinHeapNode *));
     return minHeap;
 }
 
-void restoreDown(minheap *mh, int idx)
+void print_array(int *arr, int n) {
+  for (int i=0; i<n; i++) {
+    printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+
+void restoreDown(MinHeap *mh, int idx)
 {
     int child[R + 1]; // stores the children of idx
     while (1)
@@ -50,16 +58,18 @@ void restoreDown(minheap *mh, int idx)
         for (int i = 1; i <= R; i++)
         {
             int childIdx = child_(idx, i);
-            child[i] = childIdx < mh->size ? childIdx : -1;
+            child[i] = (childIdx < mh->size) ? childIdx : -1;
         }
+        // print_array(child, R+1);
         // -1 as ith child means no child
 
         int min_child = INFTY, min_child_idx;
         for (int i = 1; i <= R; i++)
         {
             int hasIthChild = (child[i] != -1);
+            if (!hasIthChild) continue;
             int ithChildLessThanMinChild = (mh->heap[child[i]]->key < min_child);
-            if (hasIthChild && ithChildLessThanMinChild)
+            if (ithChildLessThanMinChild)
             {
                 min_child_idx = child[i];
                 min_child = mh->heap[child[i]]->key;
@@ -72,14 +82,14 @@ void restoreDown(minheap *mh, int idx)
         int parentValGreaterThanMinChild = (mh->heap[idx]->key > mh->heap[min_child_idx]->key);
         if (parentValGreaterThanMinChild)
         {
-            swap_(&mh->heap[idx], &mh->heap[min_child_idx]);
+            swap_MinHeapNode(&mh->heap[idx], &mh->heap[min_child_idx]);
         }
 
         idx = min_child_idx;
     }
 }
 
-void restoreUp(minheap *mh, int idx)
+void restoreUp(MinHeap *mh, int idx)
 {
     int parentIdx = parent_(idx);
     while (parentIdx >= 0)
@@ -87,7 +97,7 @@ void restoreUp(minheap *mh, int idx)
         int parentValueGreaterThanCurr = (mh->heap[idx]->key < mh->heap[parentIdx]->key);
         if (parentValueGreaterThanCurr)
         {
-            swap_(&mh->heap[idx], &mh->heap[parentIdx]);
+            swap_MinHeapNode(&mh->heap[idx], &mh->heap[parentIdx]);
             idx = parentIdx;
             parentIdx = parent_(parentIdx);
         }
@@ -96,19 +106,20 @@ void restoreUp(minheap *mh, int idx)
     }
 }
 
-int isInMinHeap(minheap *mh, int v)
+// vertex v is in minHeap or not
+int isInMinHeap(MinHeap *mh, int v)
 {
     if (mh->position[v] < mh->size)
         return 1;
     return 0;
 }
 
-minheap_node *deleteMin(minheap *mh)
+MinHeapNode *deleteMin(MinHeap *mh)
 {
     if (mh->size == 0)
         return NULL;
-    minheap_node *min = mh->heap[0];
-    minheap_node *lastNode = mh->heap[mh->size - 1];
+    MinHeapNode *min = mh->heap[0];
+    MinHeapNode *lastNode = mh->heap[mh->size - 1];
     mh->heap[0] = lastNode;
 
     mh->position[min->v] = mh->size - 1;
@@ -121,7 +132,7 @@ minheap_node *deleteMin(minheap *mh)
     return min;
 }
 
-void reduceKey(minheap *mh, int v, int key)
+void reduceKey(MinHeap *mh, int v, int key)
 {
     int i = mh->position[v];
     mh->heap[i]->key = key;

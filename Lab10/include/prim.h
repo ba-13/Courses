@@ -9,4 +9,4 @@ typedef struct edge
 
 void edges_to_adjacency_matrix(edge *edges, int n, int **mat);
 
-void printArr(int *arr, int n);
+void print_mst(int *arr, int *keys, int n);

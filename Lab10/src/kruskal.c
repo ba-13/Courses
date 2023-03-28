@@ -45,6 +45,7 @@ int find_parent(node *nodes, int nodeIdx)
     {
         return nodeIdx;
     }
+    // path compression
     nodes[nodeIdx].parent = find_parent(nodes, nodes[nodeIdx].parent);
     return nodes[nodeIdx].parent;
 }
@@ -71,8 +72,8 @@ void union_set(node *nodes, int pIdx, int qIdx)
 void kruskal(edge *edges, int n, int m)
 {
     quick_sort(edges, 0, n - 1);
-    printf("Weight sorted edges:\n");
-    print_edges(edges, n);
+    // printf("Weight sorted edges:\n");
+    // print_edges(edges, n);
     // now create a list of graph nodes
     node nodes[m];
     for (int i = 0; i < n; i++)
@@ -87,7 +88,7 @@ void kruskal(edge *edges, int n, int m)
         int v1 = find_parent(nodes, edges[i].n1);
         int v2 = find_parent(nodes, edges[i].n2);
         int wt = edges[i].w;
-        if (v1 != v2)
+        if (v1 != v2) // i.e. both in disjoint sets
         {
             union_set(nodes, v1, v2);
             printf("%d --(%d)-- %d\n", edges[i].n1, wt, edges[i].n2);
