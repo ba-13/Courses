@@ -2,3 +2,4 @@ bin
 obj
 _*.txt
 *.out
+__pycache__
