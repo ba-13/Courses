@@ -115,12 +115,22 @@ class Function:
         # print("minimum_used_strings:", self.minimum_used_strings)
         pages_used = set()
         # count all pages to be used
-        for j in range(func[0][0]):
+        j = 0
+        while j < func[0][0]:
             next_page = self.block.fsm.__next__()
+            prev_size = len(pages_used)
             pages_used.add(next_page)
-        for j in range(func[0][1]):
+            if len(pages_used) == prev_size:  # if collision occurred in pages_used
+                j -= 1
+            j += 1
+        j = 0
+        while j < func[0][1]:
             next_page = self.block.fsm.__next__()
+            prev_size = len(pages_used)
             pages_used.add(next_page)
+            if len(pages_used) == prev_size:  # if collision occurred in pages_used
+                j -= 1
+            j += 1
         pages_used = list(pages_used)
 
         for i, string in enumerate(func):
@@ -165,12 +175,22 @@ class KeyApply:
 
     def apply(self, func: list) -> set:
         Vg_vector = set()
-        for j in range(func[0][0]):
+        j = 0
+        while j < func[0][0]:
             next_page = self.fsm.__next__()
+            prev_size = len(Vg_vector)
             Vg_vector.add(next_page)
-        for j in range(func[0][1]):
+            if len(Vg_vector) == prev_size:  # if collision occurred in Vg_vector
+                j -= 1
+            j += 1
+        j = 0
+        while j < func[0][1]:
             next_page = self.fsm.__next__()
+            prev_size = len(Vg_vector)
             Vg_vector.add(next_page)
+            if len(Vg_vector) == prev_size:  # if collision occurred in Vg_vector
+                j -= 1
+            j += 1
         return Vg_vector
 
     def reinit(self, key):

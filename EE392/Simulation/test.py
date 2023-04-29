@@ -9,16 +9,17 @@ parser = argparse.ArgumentParser(
     description="Flash LIM Architecture Test", add_help=True
 )
 parser.add_argument(
-    "-correct_key", type=int, help="Correct Key set by the designer", default=155
+    "-correct_key", type=int, help="Correct Key set by the designer", default=4000
 )
 parser.add_argument("-debug", type=bool, help="Debug mode", default=False)
 parser.add_argument("-num_strings", type=int, help="Number of strings", default=10)
+parser.add_argument("-key_space", type=int, help="Key space", default=100)
 args = parser.parse_args()
-
 
 flash = FlashModule(
     0, args.correct_key, args.num_strings
 )  # initialize with correct key, simulating designing
+flash.debug = args.debug
 
 """
 Functions are represented as a list of tuples, where each tuple corresponds to a NAND string's input, with first value of tuple signifying the number of zeros and second value signifying the number of ones to be inserted.
@@ -28,15 +29,18 @@ for the values of A=0, B=1, C=1, D=0
 will correspond to:
 [(2, 1), (1, 1)]
 """
-functions = [[(3, 2), (0, 1)], [(2, 4), (5, 6)]]
-colors = ["r", "b", "g"]  # need to have at least as many colors as functions
+functions = [[(3, 2), (5, 1)], [(2, 4), (5, 6)]]
+colors = ["r", "c", "g"]  # need to have at least as many colors as functions
 symbols = ["o", "^"]
 
 fig, ax = plt.subplots()
 for f_idx in range(len(functions)):
     print(f"For function {f_idx}:")
     key_streak = []
-    rng = range(args.correct_key - 100, args.correct_key + 100)
+    rng = range(
+        args.correct_key - int(args.key_space / 2),
+        args.correct_key + int(args.key_space / 2),
+    )
     for i in rng:
         flash.reinit(i)
         streak = 0
@@ -47,7 +51,7 @@ for f_idx in range(len(functions)):
                     print("--------------------")
                 break
             else:
-                if flash.debug:
+                if flash.debug and i == args.correct_key:
                     print(f"Valid with Y = {Y}, now for key {i}: streak = {streak}")
             # sleep(0.5)
             streak += 1
