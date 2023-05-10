@@ -3,7 +3,7 @@ class FSM:
         self.num_pages = num_pages
         self.a = 1664525  # a-1 should be divisible by all prime factors of num_pages
         self.c = 1013904223
-        self.m = 2**32
+        self.m = 2**128
         self.seed = seed  # maybe sum of bits of Vg init
         self.step = 0
 
