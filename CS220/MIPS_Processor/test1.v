@@ -28,7 +28,7 @@ module mips_tb;
   end
 
   initial begin
-    $readmemb("test_programs/bin/testing_storing_loading.bin", uut.inst_mem.mem.memory, 0,
+    $readmemb("test_programs/asm/bin/testing_storing_loading.bin", uut.inst_mem.mem.memory, 0,
               steps - 1);
     $display("--------------------------------------------");
     for (i = 0; i < steps; i = i + 1)

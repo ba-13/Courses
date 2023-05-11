@@ -26,7 +26,7 @@ module mips_tb;
   end
 
   initial begin
-    $readmemb("test_programs/bin/bubble_sort.bin", uut.inst_mem.mem.memory, 0, steps - 1);
+    $readmemb("test_programs/bin/out.bin", uut.inst_mem.mem.memory, 0, steps - 1);
     $readmemh("test_programs/bubble_sort_data.hex", uut.data_mem.mem.memory, 0, size_array - 1);
     $display("--------------------------------------------");
     for (i = 0; i < 10; i = i + 1)
@@ -38,6 +38,8 @@ module mips_tb;
     // $monitor("[ALU] Result: %h", uut.alu_result);
   end
 
+  // always #0.5 clock = ~clock;
+
   initial begin
     // Initialize Inputs  
     #1;
@@ -47,7 +49,7 @@ module mips_tb;
     while (!done) begin
       #0.5 clock <= ~clock;
     end
-    $display("--------------------------------------------");
+    #150 $display("--------------------------------------------");
     $display("Final state:");
     $display("--------------------------------------------");
     for (i = 0; i < 32; i = i + 1) begin

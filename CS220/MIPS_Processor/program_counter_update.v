@@ -3,7 +3,7 @@
 
 module program_counter_update (
     input [INSTR_ADDR_SIZE-1:0] current_pc,
-    input [INSTR_ADDR_SIZE-1:0] imm_extended,
+    input [INSTR_ADDR_SIZE-1:0] imm_extended,  // this is offset, sign extended
     input [25:0] jump,
     input shouldBranch,
     input shouldJump,
@@ -40,7 +40,7 @@ module program_counter_update (
   adder add_offset (
       .A(current_pc),
       .B(imm_extended_shifted),
-      .is_signed(1'b0),
+      .is_signed(1'b1),
       .carry_in(1'b0),
       .carry_out(address_overflow),
       .out(pc_with_offset)

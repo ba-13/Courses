@@ -2,7 +2,7 @@
 
 module mips_tb;
 
-  parameter steps = 9;
+  parameter steps = 19;
   parameter size_array = 10;
 
   reg clk;
@@ -24,14 +24,14 @@ module mips_tb;
   end
 
   initial begin
-    $readmemb("test_programs/bin/loop.bin", uut.inst_mem.mem.memory, 0, steps - 1);
+    $readmemb("test_programs/asm/bin/swap.bin", uut.inst_mem.mem.memory, 0, steps - 1);
     $display("--------------------------------------------");
     for (i = 0; i < steps; i = i + 1)
       $display("Instruction Memory at address %0d: \t%b", i, uut.inst_mem.mem.memory[i]);
     $display("--------------------------------------------");
   end
 
-  always #0.5 clk = ~clk;
+  // always #0.5 clk = ~clk;
 
   initial begin
     // Initialize Inputs  
@@ -39,10 +39,10 @@ module mips_tb;
     clk <= 0;
     rst <= 0;
     #1;
-    // while (!done) begin
-    //   #0.5 clk <= ~clk;
-    // end
-    #50;
+    while (!done) begin
+      #0.5 clk <= ~clk;
+    end
+    // #100;
     $display("--------------------------------------------");
     $display("Final state:");
     $display("--------------------------------------------");

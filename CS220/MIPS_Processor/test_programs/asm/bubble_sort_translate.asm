@@ -11,7 +11,7 @@ main:
     ori     $s0,    $zero,  0x0                 # 02 counter 1
     ori     $t0,    $zero,  0x0                 # 03
     lw      $s6,    0x0,    $t0                 # 04 load s6 = size of array
-    addi    $s6,    $s6,    0xffff              # 05 s6 = size - 1
+    addi    $s6,    $s6,    -0x1                # 05 s6 = size - 1
     ori     $s1,    $zero,  0x0                 # 06 counter 2
 loop:                                           # 07 0x7
     add     $t7,    $s7,    $s1                 # 08 load address offset

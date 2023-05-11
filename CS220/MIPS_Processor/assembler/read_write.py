@@ -48,7 +48,9 @@ def read_instructions(filepath: str):
     labels = {}
     instructions = []
     for raw_instruction in raw_instructions:
-        if len(raw_instruction) == 1:
+        if "nop" in raw_instruction[0]:
+            raw_instruction = ["sll", "$zero", "$zero", "0x0"]
+        elif len(raw_instruction) == 1:
             labels[raw_instruction[0][:-1]] = curr_addr
             continue
         pair = (curr_addr, raw_instruction)

@@ -28,7 +28,7 @@ module mips_tb;
   end
 
   initial begin
-    $readmemb("test_programs/bin/add_two_numbers.bin", uut.inst_mem.mem.memory, 0, steps - 1);
+    $readmemb("test_programs/asm/bin/add_two_numbers.bin", uut.inst_mem.mem.memory, 0, steps - 1);
     $display("--------------------------------------------");
     for (i = 0; i < steps; i = i + 1)
       $display("Instruction Memory at address %0d: \t%b", i, uut.inst_mem.mem.memory[i]);

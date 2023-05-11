@@ -17,6 +17,9 @@ def mode_instruction(operand: str):
 
 
 def int_to_binary_string(number: int, length: int):
+    if number < 0:
+        number = -number
+        return bin((number ^ (2 ** (length) - 1)))[2:]
     return f"{number:#0{length+2}b}"[2:]
 
 
@@ -34,18 +37,17 @@ def parser_instruction(addr_instruction: tuple, labels: dict = {}):
     opcode = opcodes[operand]
     mode = mode_instruction(operand)
     if mode == "j":
-        # assumed that j offset is the format
+        # jump supports direct addressing
+        # assumed that j addr is the format
         label = instruction[1]
-        if label[:2] == "0x":
+        if label[:2] == "0x" or label[1:3] == "0x":
             # is a direct address
             addr = int(label, 16)
         else:
             # is a label
             addr = labels[label]
-        # offset = addr - address + NEXT_INSTRUCTION_JUMP
-        offset = addr
-        offset = int_to_binary_string(offset, 26)
-        machine_code = opcode + offset
+        addr = int_to_binary_string(addr, 26)
+        machine_code = opcode + addr
         return machine_code
     if mode == "i":
         # handling lw, sw
@@ -69,16 +71,16 @@ def parser_instruction(addr_instruction: tuple, labels: dict = {}):
             # bne $rs, $rt, offset
             # offset is in hex
             label = instruction[3]
-            if label[:2] == "0x":
+            if label[:2] == "0x" or label[1:3] == "0x":
                 # is a direct address
-                addr = int(label, 16)
+                offset = int(label, 16)
             else:
                 # is a label
-                addr = labels[label]
+                offset = labels[label] - address + NEXT_INSTRUCTION_JUMP
             rs = instruction[1]
             rt = instruction[2]
             machine_code = (
-                opcode + registers[rs] + registers[rt] + int_to_binary_string(addr, 16)
+                opcode + registers[rs] + registers[rt] + int_to_binary_string(offset, 16)
             )
             return machine_code
         # format is:

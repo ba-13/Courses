@@ -1,4 +1,5 @@
 module control (
+    input [31:0] instruction,
     input [5:0] opcode,
     input register_writing_done,
     input [31:0] alu_result,
@@ -17,8 +18,9 @@ module control (
   reg should_write_register;
   reg mem_write;
   reg alu_output_changed;
+  reg instruction_changed;
   assign register_write = should_write_register & ~register_writing_done;
-  assign memory_write = alu_output_changed & mem_write;
+  assign memory_write = (instruction_changed | alu_output_changed) & mem_write;
   // note that register_writing_done and alu_output_changed are resetted in the next clock cycle
 
   assign alu_op = opcode;
@@ -27,8 +29,14 @@ module control (
     alu_output_changed <= 1'b1;
   end
 
+  always @(instruction) begin
+    // alu_output_changed <= 1'b1;
+    instruction_changed <= 1'b1;
+  end
+
   always @(posedge clk) begin
     should_write_register <= 0;
+    alu_output_changed <= 0;
   end
 
   always @(opcode, posedge clk) begin  // freaking put posedge clk here

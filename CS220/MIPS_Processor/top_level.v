@@ -187,7 +187,6 @@ module top_level (
     end else begin
       PC <= next_pc;
       rfile.register_writing_done <= 0;
-      cnt.alu_output_changed <= 0;
     end
 
     if (instruction == 32'h00000000) begin
