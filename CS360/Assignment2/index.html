@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="glMatrix-0.9.5.min.js"></script>
+    <script src="_glsl.js"></script>
+    <script src="_glInit.js"></script>
+    <script src="_utils.js"></script>
+    <script src="_shapes.js"></script>
+    <script src="index.js"></script>
+    <title>Scenery</title>
+</head>
+
+<body onload="webGLStart();">
+    <canvas id="canva" style="border:none" width="650" height="650"></canvas>
+    <div class="changes">
+        <span class="slider-text">Change Light Position:</span>
+        <input type="range" min="-100" max="100" value="50" class="slider" id="lightPosSlider">
+        <span class="slider-val" id="lightPosXval"></span>
+        <span class="slider-text">Change Camera Position:</span>
+        <input type="range" min="-20" max="20" value="3" class="slider" id="cameraPosSlider">
+        <span class="slider-val" id="cameraPosZval"></span>
+    </div>
+</body>
+
+<style>
+    .changes {
+        width: 700px;
+        display: grid;
+        grid-template-columns: 220px 420px auto;
+        background-color: #79c3ff;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    .slider-text,
+    .slider-val {
+        font-family: monospace;
+    }
+
+    .slider-val {
+        text-align: center;
+    }
+
+    .slider {
+        width: 400px;
+    }
+</style>
+
+<script src="events.js"></script>
+
+</html>
