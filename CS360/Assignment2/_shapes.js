@@ -1,3 +1,5 @@
+//@ts-check
+
 class Cube {
   constructor(
     aPositionLocation,
@@ -5,7 +7,8 @@ class Cube {
     aNormalLocation,
     uMMatrixLocation,
     uVMatrixLocation,
-    uPMatrixLocation
+    uPMatrixLocation,
+    uNMatrixLocation
   ) {
     this.aPositionLocation = aPositionLocation;
     this.uColorLocation = uColorLocation;
@@ -13,6 +16,7 @@ class Cube {
     this.uMMatrixLocation = uMMatrixLocation;
     this.uVMatrixLocation = uVMatrixLocation;
     this.uPMatrixLocation = uPMatrixLocation;
+    this.uNMatrixLocation = uNMatrixLocation;
     this.vertices = [
       // Front face
       -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5,
@@ -89,8 +93,8 @@ class Cube {
       new Float32Array(this.vertices),
       gl.STATIC_DRAW
     );
-    this.vertexBuffer.itemSize = 3;
-    this.vertexBuffer.numItems = this.vertices.length / 3;
+    this.vertexBufferitemSize = 3;
+    this.vertexBuffernumItems = this.vertices.length / 3;
 
     this.normalBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.normalBuffer);
@@ -99,8 +103,8 @@ class Cube {
       new Float32Array(this.normals),
       gl.STATIC_DRAW
     );
-    this.normalBuffer.itemSize = 3;
-    this.normalBuffer.numItems = this.vertices.length / 3;
+    this.normalBufferitemSize = 3;
+    this.normalBuffernumItems = this.vertices.length / 3;
 
     this.indexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
@@ -109,16 +113,15 @@ class Cube {
       new Uint16Array(this.indices),
       gl.STATIC_DRAW
     );
-    this.indexBuffer.itemSize = 1;
-    this.indexBuffer.numItems = this.indices.length;
-    console.log("Initialized cube buffer");
+    this.indexBufferitemSize = 1;
+    this.indexBuffernumItems = this.indices.length;
   }
 
   draw(mMatrix, vMatrix, pMatrix, color) {
     gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
     gl.vertexAttribPointer(
       this.aPositionLocation,
-      this.vertexBuffer.itemSize,
+      this.vertexBufferitemSize,
       gl.FLOAT,
       false,
       0,
@@ -127,7 +130,7 @@ class Cube {
     gl.bindBuffer(gl.ARRAY_BUFFER, this.normalBuffer);
     gl.vertexAttribPointer(
       this.aNormalLocation,
-      this.normalBuffer.itemSize,
+      this.normalBufferitemSize,
       gl.FLOAT,
       false,
       0,
@@ -140,6 +143,8 @@ class Cube {
     gl.uniformMatrix4fv(this.uMMatrixLocation, false, mMatrix);
     gl.uniformMatrix4fv(this.uVMatrixLocation, false, vMatrix);
     gl.uniformMatrix4fv(this.uPMatrixLocation, false, pMatrix);
+    let nMatrix = mat4.transpose(mat4.inverse(mMatrix));
+    gl.uniformMatrix4fv(this.uNMatrixLocation, false, nMatrix);
 
     gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_SHORT, 0);
   }
@@ -152,7 +157,8 @@ class Sphere {
     aNormalLocation,
     uMMatrixLocation,
     uVMatrixLocation,
-    uPMatrixLocation
+    uPMatrixLocation,
+    uNMatrixLocation
   ) {
     this.aPositionLocation = aPositionLocation;
     this.uColorLocation = uColorLocation;
@@ -160,10 +166,11 @@ class Sphere {
     this.uMMatrixLocation = uMMatrixLocation;
     this.uVMatrixLocation = uVMatrixLocation;
     this.uPMatrixLocation = uPMatrixLocation;
+    this.uNMatrixLocation = uNMatrixLocation;
     this.indices = [];
     this.vertices = [];
     this.normals = [];
-    this.nslices = 12;
+    this.nslices = 30;
     this.nstacks = this.nslices;
     this.radius = 1.0;
     this.initSphere(this.nslices, this.nstacks, this.radius);
@@ -237,8 +244,8 @@ class Sphere {
       new Float32Array(this.vertices),
       gl.STATIC_DRAW
     );
-    this.vertexBuffer.itemSize = 3;
-    this.vertexBuffer.numItems = this.nslices * this.nstacks;
+    this.vertexBufferitemSize = 3;
+    this.vertexBuffernumItems = this.nslices * this.nstacks;
 
     this.normalBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.normalBuffer);
@@ -247,8 +254,8 @@ class Sphere {
       new Float32Array(this.normals),
       gl.STATIC_DRAW
     );
-    this.normalBuffer.itemSize = 3;
-    this.normalBuffer.numItems = this.nslices * this.nstacks;
+    this.normalBufferitemSize = 3;
+    this.normalBuffernumItems = this.nslices * this.nstacks;
 
     this.indexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
@@ -257,16 +264,15 @@ class Sphere {
       new Uint32Array(this.indices),
       gl.STATIC_DRAW
     );
-    this.indexBuffer.itemSize = 1;
-    this.indexBuffer.numItems = (this.nstacks - 1) * 6 * (this.nslices + 1);
-    console.log("Initialized sphere buffer");
+    this.indexBufferitemSize = 1;
+    this.indexBuffernumItems = (this.nstacks - 1) * 6 * (this.nslices + 1);
   }
 
   draw(mMatrix, vMatrix, pMatrix, color) {
     gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
     gl.vertexAttribPointer(
       this.aPositionLocation,
-      this.vertexBuffer.itemSize,
+      this.vertexBufferitemSize,
       gl.FLOAT,
       false,
       0,
@@ -275,7 +281,7 @@ class Sphere {
     gl.bindBuffer(gl.ARRAY_BUFFER, this.normalBuffer);
     gl.vertexAttribPointer(
       this.aNormalLocation,
-      this.normalBuffer.itemSize,
+      this.normalBufferitemSize,
       gl.FLOAT,
       false,
       0,
@@ -284,9 +290,12 @@ class Sphere {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
 
     gl.uniform4fv(this.uColorLocation, color);
+    gl.uniform3fv(uLightLocation, lightPos);
     gl.uniformMatrix4fv(this.uMMatrixLocation, false, mMatrix);
     gl.uniformMatrix4fv(this.uVMatrixLocation, false, vMatrix);
     gl.uniformMatrix4fv(this.uPMatrixLocation, false, pMatrix);
+    let nMatrix = mat4.transpose(mat4.inverse(mMatrix));
+    gl.uniformMatrix4fv(this.uNMatrixLocation, false, nMatrix);
 
     gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_INT, 0);
   }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="glMatrix-0.9.5.min.js"></script>
+    <script src="_glsl.js"></script>
+    <script src="_glInit.js"></script>
+    <script src="_utils.js"></script>
+    <script src="_shapes.js"></script>
+    <script src="index.js"></script>
+    <title>Scenery</title>
+</head>
+
+<body onload="webGLStart();">
+    <canvas id="canva" style="border:none" width="650" height="650"></canvas>
+    <div class="changes">
+        <h3>Change Fill Type:</h3>
+        <button onclick="changeFillType('point')">Point</button>
+        <button onclick="changeFillType('line')">Wireframe</button>
+        <button onclick="changeFillType('fill')">Solid</button>
+    </div>
+</body>
+
+</html>

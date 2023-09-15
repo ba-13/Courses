@@ -36,7 +36,7 @@ function fragmentShaderSetup(fragmentShaderCode) {
  */
 function initShaders(vertexShaderCode, fragmentShaderCode) {
   let shaderProgram = gl.createProgram();
-  console.log("Create shaderProgram");
+  console.log("Created shaderProgram");
 
   let vertexShader = vertexShaderSetup(vertexShaderCode);
   let fragmentShader = fragmentShaderSetup(fragmentShaderCode);

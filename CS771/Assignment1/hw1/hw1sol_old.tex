@@ -1,0 +1,176 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{mlsubmit}
+
+\begin{document}
+
+\initmlsubmision{1} % assignment number
+{B Anshuman}   % your name
+{200259}	% your roll number
+
+\begin{mlsolution}
+
+Consider a single class $c$. We can find optimal $w_c$ and $M_c$ which generalizes for all classes.
+
+\begin{align}\label{q1:loss}
+    \mathcal{L}(w_c, M_c) = \sum_{x_n: y_n=c} \frac{1}{N_c} (x_n - w_c)^T M_c (x_n - w_c) - log \vert M_c \vert
+\end{align}
+$$
+    (\hat{w_c}, \hat{M_c}) = \argmin _{w_c, M_c} \mathcal{L}(w_c, M_c)
+$$
+
+By first order optimization, $\frac{\partial \mathcal{L}}{\partial w_c} = 0$ would yield optimum $w_c$, similarly for $M_c$.
+\begin{align*}
+    \frac{\partial \mathcal{L}}{\partial w_c} & = \sum_{x_n:y_n=c} \frac{1}{N_c} \frac{\partial}{\partial (x_n - w_c)} (x_n - w_c)^T M_c (x_n - w_c) \frac{\partial}{\partial w_c} (x_n - w_c) \\
+    & = \sum_{x_n:y_n = c} (M_c + M_c^T) (x_n - w_c) (-1) \\
+    & = \sum_{x_n:y_n = c} x_n - N_c w_c \\
+    & = 0
+\end{align*}
+\begin{align} \label{q1:optimalwc}
+w_c = \frac{1}{N_c} \sum_{x_n:y_n = c} x_n    
+\end{align}
+Similarly for $M_c$
+
+\begin{align*}
+    \frac{\partial\mathcal{L}}{\partial w_c} & = \sum_{x_n:y_n = c} \frac{1}{N_c} (x_n - w_c)(x_n - w_c)^T - (M_c^{-1})^T \\
+    & = 0
+\end{align*}
+\begin{align} \label{q1:optimalmc}
+M_c = \left(\left(\frac{1}{N_c} \sum_{x_n:y_n = c} (x_n - w_c)(x_n - w_c)^T\right)^{-1}\right)^T
+\end{align}
+
+Suppose if $M_c$ was identity; \ref{q1:loss} would simplify to euclidean squared loss:
+\begin{align}
+    \mathcal{L} = \frac{1}{N_c} \sum_{x_n:y_n=c} (x_n - w_c)^T (x_n - w_c)
+\end{align} 
+
+\end{mlsolution}
+
+\begin{mlsolution}
+
+Given a classification algorithm is said to be \textit{consistent} if, when it has access to infinite training data, it's error rate approaches optimal error rate (called \textit{Bayes optimal}).
+
+One Nearest-Neighbour algorithm with infinite correctly labelled training data implies all the input space and it's labels is provided to the algorithm already, which means it's error rate would approach zero for test data, because the test set would belong to the input space, which already is present in the training set.
+
+Note that algorithms that use representation/prototype based learning will on the other hand not reach Bayes optimal error rate.
+
+\end{mlsolution}
+
+\begin{mlsolution}
+
+First defining \textit{input set} of a node, is the set of data points received by the node during training that has to be split into multiple more pure sets, as child nodes.
+
+At every decision stump of the decision tree, we have maximum information gain that is lowest possible average entropy of it's child nodes' sets.
+
+Given, labels are real-valued, with features being classes or real-valued or both. We'll be using variance of label value to quantify the homogenity of a set.
+
+Let $(X, y)$ be the input set at root. For splitting at the root (recursively, root is every subtree's top), let's choose $x$ feature out of $X$ to consider for the decision stump. Here arise 2 cases for a feature $x$:
+\begin{itemize}
+    \item $x$ is categorical, $x \in \{A_1, A_2, \cdots, A_N\}$: Measure the variance of input set, $\frac{1}{N_r - 1}\sum_{n=1}^{N_r} (y_n - \bar{y}_r)^2$, where $\bar{y}_r = \frac{1}{N_r}\sum_{n=1}^{N_r}y_n$ We can split the input space according to each class $A_i$ with $N_{a_i}$ number of elements (note $\sum_{i=1}^{N}N_{a_i} = N_r$) and measure the variance of each child node set, $\frac{1}{N_{a_i} - 1}\sum_{n=1}^{N_{a_i}} (y - \bar{y}_{a_i})^2$ where $y_{a_i}$ is mean similarly defined as $y_r$. \\
+    We would require the following averaged variance of child sets to be minimized:
+    \begin{equation} \label{q3:variancesum}
+    \sum_{i=1}^{N} \frac{N_{a_i}}{N_r} \left(\frac{1}{N_{a_i} - 1} \sum_{n=1}^{N_{a_i}} (y - \bar{y}_{a_i})^2\right) - \frac{1}{N_r - 1}\sum_{n=1}^{N_r} (y_n - \bar{y}_r)^2
+    \end{equation}
+    For minimizing, we can iterate through other features of $X$
+    \item $x$ is real valued: We can split the input space to 2 categories $\{A_+, A_-\}$ on basis of $x < a$. We can decide $a$ value by iterating through all data points (sorted according to $x$), choose $a$ as average of 2 consecutive data points's $x$ values, effectively splitting the input data set into those less than the average ($A_+$) and those greater than/equal ($A_-$). Now for all these $a$, calculate average variance as in \ref{q3:variancesum} and take the particular $a$ which gives the minimum average variance. \\
+    We can extend this idea by iterating through all features, and choosing that particular $x$ and corresponding $a$ which has the minimum variance!
+\end{itemize}
+
+You can keep on splitting until each child node only has one data point, or you can stop splitting and label that particular node with the \textit{average} label of the input set of that node.
+
+\end{mlsolution}
+
+\begin{mlsolution}
+    
+Linear Regression Model is:
+$$y = w^T x$$
+
+We know that Linear Regression Loss can be minimized to yield:
+$$w_{LS} = \argmin_w \mathcal{L}(w) = \argmin_w \frac{1}{N} \sum_{n=1}^{N} (y_n - w^T x_n)^2$$
+
+\begin{align}
+    w_{LS} &= (X^T X)^{-1} X^T y \\
+           &= (X^T X)^{-1} \sum_{n=1}^{N} y_n x_n
+\end{align}
+During inference, $y_* = w^T_{LS} x_*$ can thus be written as
+\begin{align*}
+y_* &= ((X^T X)^{-1} \sum_{n=1}^{N} y_n x_n) \cdot x_* \\
+    &= \sum_{n=1}^{N} \left(((X^T X)^{-1} x_n)^T x_*\right) y_n
+\end{align*}
+
+Therefore, $w_n = ((X^T X)^{-1} x_n)^T x_*$, where $(X^T X)^{-1}$ is the inverse of Gramian matrix (or covariance matrix of feature space), and is a constant during inference. Denote it as $G$. Therefore $w_n$ can be seen as dot-product similarity between $x_n$ and $x_*$ projected to some space by $G$, more similar is $x_*$ to $x_n$, higher weightage is given to $y_n$ for $f(x_*)$.
+
+In \textbf{K-nearest neighbours}, for a new input $x_*$, sort the distances from all $N$ training samples, and choose nearest $K$ samples. One way of deciding the label $y_*$ can be:
+\begin{align*}
+d_n &= \lVert x_* - x_n \rVert _2^2 \\ 
+    &= (x_* - x_n)^T(x_* - x_n) \\
+y_* &= \frac{1}{\sum_{i=1}^{K} \frac{1}{d_i}} \sum_{n=1}^{K} \frac{1}{d_n}\ y_n \\
+\therefore w_n &= \eta \frac{1}{(x_* - x_n)^T(x_* - x_n)}
+\end{align*}
+
+$w_n^\textit{KNN}$ and $w_n^\textit{LS}$ are different in terms that \textit{KNN} derieves similarity between features $x_n$ and $x_*$ in terms of inverse of distances, while \textit{LS} derieves similarity in terms of inner product between them.
+
+\end{mlsolution}
+
+\begin{mlsolution}
+    
+Let's denote $n^{th}$ sample as $x^{(n)}$ and $i^{th}$ feature as $x_i$.
+
+For a sample $x^{(n)}$, each feature can be masked with a probability $p$. Define $D \times D$ diagonal matrix $M^{(n)}$ with each $(d, d)$ entry $M_{d, d}^{(n)} \sim \textit{Bernoulli}(p)$, with $\tilde{x}^{(n)} = M^{(n)} x^{(n)}$.
+
+Modified Loss function:
+\begin{align*}
+    \mathcal{L}(w) &= \sum_{n=1}^{N} (y^{(n)} - w^T M^{(n)} x^{(n)})^2
+\end{align*}
+Expectation of $\mathcal{L}$:
+\begin{align*}
+    \mathbb{E}_M[\mathcal{L}(w)] &= \sum_{n=1}^{N}\mathbb{E} [(y^{(n)} - w^T M^{(n)} x^{(n)})^2] \\
+    &= \sum_{n=1}^{N} \mathbb{E}[(y^{(n)})^2 + (w^T M^{(n)} x^{(n)})^2 - 2 y^{(n)} w^T M^{(n)} x^{(n)}] \\
+    &= \sum_{n=1}^{N} (y^{(n)})^2 + \mathbb{E}[(w^T M^{(n)} x^{(n)})^2] - 2 y^{(n)} w^T p x^{(n)} \numberthis \label{q5:expectationexpanded}
+\end{align*}
+Second term for a particular $n$ (denoting $x^{(n)}$ as $x$) is equivalent to $(\sum_{k=1}^{D} w_k m_k x_k)^2 = \sum_{j=1}^{D} \alpha_j^2 + \sum \sum_{k\neq l} \alpha_k \alpha_l$, where $\alpha_i = w_i m_i x_i$, and note that $m_i$ and $m_j, i\neq j$ are independent.
+
+With results that $\mathbb{E}[\alpha_k^2] = (w_k x_k)^2 p$ and $\mathbb{E}[\alpha_k]\mathbb{E}[\alpha_l] = (w_k x_k w_l x_l) p^2$ for $k\neq l$
+
+\begin{align*}
+    \mathbb{E}[(w^T M^{(n)} x^{(n)})^2] &= \sum_{j=1}^{D} \mathbb{E}[\alpha_j^2] + \sum_{k\neq l, k=1, l=1}^{D} \mathbb{E}[\alpha_k] \mathbb{E}[\alpha_l] \\
+    &= \left( p((w_1 x_1)^2 + (w_2 x_2)^2 + \cdots) + p^2(w_1 x_1 w_2 x_2 + \cdots) \right) \\
+    &= p((w_1 x_1)^2 + (w_2 x_2)^2 + \cdots) + p^2(w_1 x_1 w_2 x_2 + \cdots) \\ 
+    &+ p(w_1 x_1 w_2 x_2 + \cdots) - p(w_1 x_1 w_2 x_2 + \cdots) \\
+    &= p(\sum_{k=1}^{D} w_k x_k)^2 - pq(\sum_{k\neq l} w_k x_k w_l x_l) \\
+    &= p(w^T x)^2 - pq(\sum_{k\neq l} w_k w_l x_k x_l)
+\end{align*}
+
+Putting this at \ref{q5:expectationexpanded}
+\begin{align*}
+    \mathbb{E}_M[\mathcal{L}(w)] &= \sum_{n=1}^{N} (y^{(n)})^2 + p(y^{(n)})^2 - p(y^{(n)})^2 + p (w^T x^{(n)})^2 - pq(\sum_{l\neq k} w_k w_l x_k^{(n)} x_l^{(n)}) - 2p y^{(n)} w^T x^{(n)} \\
+    &= p\sum_{n=1}^{N} \left( y^{(n)} - w^T x^{(n)} \right)^2 + q \sum_{n=1}^{N} (y^{(n)})^2 - pq \sum_{k\neq l} \sum_{n=1}^{N} w_k w_l x_k^{(n)} x_l^{(n)} \\
+    &= p\sum_{n=1}^{N} \left( y^{(n)} - w^T x^{(n)} \right)^2 - pq \sum_{k \neq l} A_{k,l} w_k w_l + C
+\end{align*}
+
+Which is the regular square loss with another term that acts as regulariser.
+\end{mlsolution}
+
+\begin{mlsolution}
+\begin{itemize}
+    \item Using \textit{convex} combination method, test dataset accuracy obtained is 46.89\%.
+    \item \textit{regress} over class attributes to get class means, yields the following results
+    \begin{center}
+        \begin{tabular}{ c | c }
+            Accuracy (\%) & Lambda \\
+            \hline
+            58.09 & 0.01 \\
+            59.55 & 0.1 \\
+            67.39 & 1 \\
+            73.28 & 10 \\
+            71.68 & 20 \\
+            65.08 & 50 \\
+            56.47 & 100    
+        \end{tabular}
+    \end{center}
+    Best value of $\lambda$ is 10, giving 73.28\% accuracy.
+\end{itemize}
+
+\end{mlsolution}
+
+\end{document}

@@ -1,0 +1,24 @@
+{
+  "files.associations": {
+    "*.rmd": "markdown",
+    "types.h": "c",
+    "unistd.h": "c",
+    "cstdlib": "cpp",
+    "*.tcc": "cpp",
+    "memory": "cpp",
+    "*.txx": "cpp",
+    "new": "cpp",
+    "*.ipp": "c",
+    "chrono": "c",
+    "complex": "c",
+    "string_view": "c",
+    "random": "c",
+    "functional": "c",
+    "istream": "c",
+    "limits": "c",
+    "valarray": "c",
+    "numeric": "c",
+    "core": "c",
+    "mylib.h": "c"
+  }
+}

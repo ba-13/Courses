@@ -10,26 +10,48 @@
     <script src="_utils.js"></script>
     <script src="_shapes.js"></script>
     <script src="index.js"></script>
-    <title>Scenery</title>
+    <title>Abstract Art</title>
 </head>
 
 <body onload="webGLStart();">
-    <canvas id="canva" style="border:none" width="650" height="650"></canvas>
+    <canvas id="canva" style="border:none" width="1200" height="600"></canvas>
+    <div class="title">
+        <span>Per-Face Shading</span>
+        <span>Gouraud Shading</span>
+        <span>Phong Shading</span>
+    </div>
     <div class="changes">
-        <span class="slider-text">Change Light Position:</span>
-        <input type="range" min="-100" max="100" value="50" class="slider" id="lightPosSlider">
+        <span class="slider-text">Change LightX Position:</span>
+        <input type="range" min="-1000" max="1000" value="50" class="slider" id="lightPosXSlider">
         <span class="slider-val" id="lightPosXval"></span>
+        <span class="slider-text">Change LightY Position:</span>
+        <input type="range" min="-1000" max="1000" value="50" class="slider" id="lightPosYSlider">
+        <span class="slider-val" id="lightPosYval"></span>
         <span class="slider-text">Change Camera Position:</span>
-        <input type="range" min="-20" max="20" value="3" class="slider" id="cameraPosSlider">
+        <input type="range" min="20" max="200" value="40" class="slider" id="cameraPosSlider">
         <span class="slider-val" id="cameraPosZval"></span>
     </div>
 </body>
 
 <style>
-    .changes {
-        width: 700px;
+    .title {
+        width: 1200px;
         display: grid;
-        grid-template-columns: 220px 420px auto;
+        grid-template-columns: 400px 400px 400px;
+        margin-bottom: 5px;
+    }
+
+    .title>* {
+        text-align: center;
+        background-color: rgb(192, 177, 207);
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .changes {
+        width: 1180px;
+        display: grid;
+        grid-template-columns: 250px 800px auto;
         background-color: #79c3ff;
         grid-gap: 10px;
         padding: 10px;
@@ -45,7 +67,7 @@
     }
 
     .slider {
-        width: 400px;
+        width: 800px;
     }
 </style>
 

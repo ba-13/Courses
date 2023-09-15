@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug C Program",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/Testcases/test1",
+      "args": [],
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "cwd": "${workspaceFolder}/Testcases",
+      "environment": [],
+      "externalConsole": false,
+      "stopAtEntry": false,
+      "targetArchitecture": "x86",
+      "logging": {
+        "moduleLoad": true,
+        "trace": true,
+        "engineLogging": true
+      },
+      "preLaunchTask": "make" // Use your Makefile to build the program
+    }
+  ]
+}
