@@ -1,0 +1,204 @@
+\begin{Problem}
+    Tabulate the results for the applications appropriately:
+    \begin{enumerate}[label=\arabic*., itemsep=0.4pt]
+        \item Distribution of instruction length
+        \item Distribution of the number of operands in an instruction
+        \item Distribution of the number of register read operands in an instruction
+        \item Distribution of the number of register write operands in an instruction
+        \item Distribution of the number of memory operands in an instruction
+        \item Distribution of the number of memory read operands in an instruction
+        \item Distribution of the number of memory write operands in an instruction
+        \item Report the maximum and average number of R-W memory bytes touched
+        \item Report the maximum and minimum values of the immediate field in an instruction
+        \item Report the maximum and minimum values of the displacement field in a memory
+    \end{enumerate}
+\end{Problem}
+
+\begin{Solution}
+
+Due to large count size and overflow in showing them in a single table, we chose to just display the percentage for showing distributions of above. Therefore for some $0.000$ might not mean that quantity is exactly $0$. To see the exact value, refer to output files.
+
+\begin{enumerate}[label=\arabic*., itemsep=0.2pt]
+\item Table \ref{tab:pD:instr_size} represents the distribution of instruction length. Note that columns from $1 \cdots 10$ represent number of bytes, while \texttt{App} column represents the same benchmark applications as before. All counts are in percentage of all instructions.
+\item Table \ref{tab:pD:num_operands} represents the distribution of number of operands. The above format still applies here.
+\item Table \ref{tab:pD:num_rr_operands} represents the distribution of number of register read operands.
+\item Table \ref{tab:pD:num_rw_operands} represents the distribution of number of register write operands.
+\item ;
+\item ;
+\item Table \ref{tab:pD:num_mem_operands} represents the distribution of number of memory operands, containing 3 major columns ``\#Memory Operands" with possible 1 or 2 operands, ``\#Memory Read Operands" and ``\#Memory Write Operands" with possible 0, 1 or 2 operands.
+\item ;
+\item ;
+\item Table \ref{tab:pD:stats_op} contains statistics regarding Number of Bytes accessed (both read and write), Immediate Field and Displacement Field, all per Operand.
+\end{enumerate}
+
+\begin{table}[H]
+    \centering
+    \caption{Instruction Size in Percent}
+    \label{tab:pD:instr_size}
+    \begin{tabular}{| l | c | c | c | c | c | c | c | c | c | c |}
+        \hline
+        \multirow{2}{*}{App} & \multirow{2}{*}{1} & \multirow{2}{*}{2} & \multirow{2}{*}{3} & \multirow{2}{*}{4} & \multirow{2}{*}{5} & \multirow{2}{*}{6} & \multirow{2}{*}{7} & \multirow{2}{*}{8} & \multirow{2}{*}{9} & \multirow{2}{*}{10} \\
+        & & & & & & & & & & \\
+        \hline
+        400 & 11.356 & 25.172 & 27.123 & 5.182 & 7.879 & 19.868 & 3.419 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        401 & 3.923 & 20.049 & 47.280 & 7.104 & 1.817 & 11.990 & 5.995 & 1.842 & 0.000 & 0.000 \\
+        \hline
+        403 & 14.297 & 67.261 & 3.119 & 13.625 & 0.566 & 0.832 & 0.293 & 0.006 & 0.000 & 0.000 \\
+        \hline
+        429 & 8.057 & 48.355 & 31.647 & 5.040 & 2.246 & 0.561 & 4.095 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        450 & 7.917 & 43.613 & 40.094 & 1.947 & 0.390 & 3.805 & 1.851 & 0.384 & 0.000 & 0.000 \\
+        \hline
+        456 & 2.501 & 30.291 & 29.576 & 27.071 & 2.479 & 6.852 & 0.041 & 1.189 & 0.000 & 0.000 \\
+        \hline
+        471 & 15.486 & 30.902 & 38.157 & 3.436 & 4.510 & 4.859 & 2.650 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        483 & 14.559 & 31.906 & 44.701 & 3.211 & 2.423 & 2.384 & 0.776 & 0.027 & 0.007 & 0.007\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Number of Operands in Percent}
+    \label{tab:pD:num_operands}
+    \begin{tabular}{| l | c | c | c | c | c | c | c |}
+        \hline
+        \multirow{2}{*}{App} & \multirow{2}{*}{0} & \multirow{2}{*}{1} & \multirow{2}{*}{2} & \multirow{2}{*}{3} & \multirow{2}{*}{4} & \multirow{2}{*}{5} & \multirow{2}{*}{6} \\
+        & & & & & & & \\
+        \hline
+        400 & 0.067 & 0.102 & 52.849 & 35.476 & 9.703 & 1.416 & 0.387 \\
+        \hline
+        401 & 0.005 & 0.001 & 59.839 & 39.854 & 0.007 & 0.002 & 0.293 \\
+        \hline
+        403 & 0.013 & 0.022 & 30.419 & 42.029 & 1.271 & 26.246 & 0.000 \\
+        \hline
+        429 & 0.133 & 0.000 & 48.525 & 45.723 & 4.368 & 1.251 & 0.000 \\
+        \hline
+        450 & 0.000 & 0.000 & 41.793 & 39.317 & 18.501 & 0.388 & 0.000 \\
+        \hline
+        456 & 0.002 & 0.000 & 56.621 & 43.291 & 0.068 & 0.015 & 0.003 \\
+        \hline
+        471 & 0.080 & 0.023 & 51.812 & 28.168 & 17.290 & 2.510 & 0.116 \\
+        \hline
+        483 & 2.182 & 0.075 & 42.491 & 41.121 & 10.252 & 2.425 & 1.454 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Number of Register Read Operands in Percent}
+    \label{tab:pD:num_rr_operands}
+    \begin{tabular}{| l | c | c | c | c | c | c | c |}
+        \hline
+        \multirow{2}{*}{App} & \multirow{2}{*}{0} & \multirow{2}{*}{1} & \multirow{2}{*}{2} & \multirow{2}{*}{3} & \multirow{2}{*}{4} & \multirow{2}{*}{5} & \multirow{2}{*}{6} \\
+        & & & & & & & \\
+        \hline
+        400 & 0.760 & 26.897 & 52.845 & 17.899 & 0.888 & 0.324 & 0.387 \\
+        \hline
+        401 & 0.549 & 18.542 & 54.361 & 21.864 & 4.391 & 0.000 & 0.293 \\
+        \hline
+        403 & 0.096 & 15.416 & 43.685 & 1.802 & 12.938 & 26.063 & 0.000 \\
+        \hline
+        429 & 0.375 & 14.871 & 67.642 & 17.112 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        450 & 2.195 & 21.459 & 57.549 & 14.342 & 4.451 & 0.003 & 0.000 \\
+        \hline
+        456 & 0.055 & 7.556 & 56.245 & 28.127 & 8.014 & 0.001 & 0.003 \\
+        \hline
+        471 & 2.900 & 19.771 & 54.017 & 21.983 & 0.845 & 0.368 & 0.116 \\
+        \hline
+        483 & 2.922 & 23.632 & 45.950 & 25.037 & 0.124 & 0.881 & 1.454 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Number of Register Write Operands in Percent}
+    \label{tab:pD:num_rw_operands}
+    \begin{tabular}{| l | c | c | c | c | c | c | c |}
+        \hline
+        \multirow{2}{*}{App} & \multirow{2}{*}{0} & \multirow{2}{*}{1} & \multirow{2}{*}{2} & \multirow{2}{*}{3} & \multirow{2}{*}{4} & \multirow{2}{*}{5} & \multirow{2}{*}{6} \\
+        & & & & & & & \\
+        \hline
+        400 & 13.109 & 69.059 & 17.446 & 0.261 & 0.126 & 0.000 & 0.000 \\
+        \hline
+        401 & 13.522 & 72.248 & 13.937 & 0.293 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        403 & 6.783 & 72.419 & 20.797 & 0.000 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        429 & 7.094 & 77.037 & 15.866 & 0.004 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        450 & 7.375 & 75.942 & 16.683 & 0.000 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        456 & 7.518 & 75.531 & 16.948 & 0.003 & 0.000 & 0.000 & 0.000 \\
+        \hline
+        471 & 16.531 & 66.530 & 16.785 & 0.038 & 0.116 & 0.000 & 0.000 \\
+        \hline
+        483 & 11.406 & 68.527 & 18.614 & 1.454 & 0.000 & 0.000 & 0.000 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Number of Memory, Memory Read and Memory Write Operands in Percent}
+    \label{tab:pD:num_mem_operands}
+    \begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+        \hline
+        \multirow{2}{*}{App} & \multicolumn{2}{c|}{\#Memory Operands} & \multicolumn{3}{c|}{\#Memory Read Operands} & \multicolumn{3}{c|}{\#Memory Write Operands} \\
+        \cline{2-3}\cline{4-6}\cline{7-9}
+        & 1 & 2 & 0 & 1 & 2 & 0 & 1 & 2 \\
+        \hline
+        400 & 98.723 & 1.277 & 33.307 & 66.463 & 0.230 & 65.646 & 34.354 & 0.000 \\
+        \hline
+        401 & 99.507 & 0.493 & 22.817 & 77.183 & 0.000 & 76.689 & 23.311 & 0.000 \\
+        \hline
+        403 & 99.996 & 0.004 & 92.617 & 7.383 & 0.000 & 7.378 & 92.622 & 0.000 \\
+        \hline
+        429 & 100.000 & 0.000 & 19.021 & 80.979 & 0.000 & 80.979 & 19.021 & 0.000 \\
+        \hline
+        450 & 100.000 & 0.000 & 12.607 & 87.393 & 0.000 & 87.393 & 12.607 & 0.000 \\
+        \hline
+        456 & 99.996 & 0.004 & 12.121 & 87.879 & 0.000 & 87.874 & 12.126 & 0.000 \\
+        \hline
+        471 & 99.120 & 0.880 & 38.604 & 61.185 & 0.211 & 60.727 & 39.273 & 0.000 \\
+        \hline
+        483 & 95.488 & 4.512 & 28.041 & 71.959 & 0.000 & 67.448 & 32.552 & 0.000 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Bytes Accessed per Operand, Immediate Field and Displacement Field per Operand}
+    \label{tab:pD:stats_op}
+    \begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+        \hline
+        \multirow{2}{*}{App} & \multicolumn{2}{c|}{Bytes per Operand} & \multicolumn{2}{c|}{Immediate Field} & \multicolumn{2}{c|}{Displacement Field} \\
+        \cline{2-3}\cline{4-5}\cline{6-7}
+        & max & avg & max & min & max & min \\
+        \hline
+        400 & 8 & 3.718 & 2147483647 & -2147483648 & 135918104 & -1408 \\
+        \hline
+        401 & 8 & 3.507 & 100000 & -5 & 134997992 & -172 \\
+        \hline
+        403 & 8 & 3.971 & 138466100 & -2147483587 & 138633083 & -1744 \\
+        \hline
+        429 & 4 & 4.0 & 1374389535 & -100000000 & 134957120 & -76 \\
+        \hline
+        450 & 8 & 5.272 & 2147483647 & -640172613 & 135855532 & -344 \\
+        \hline
+        456 & 8 & 3.998 & 2147483647 & -987654321 & 135294312 & -580 \\
+        \hline
+        471 & 8 & 4.221 & 2147483647 & -2092037281 & 136090116 & -104 \\
+        \hline
+        483 & 8 & 4.15 & 2147483647 & -1431655765 & 139655605 & -1392 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\end{Solution}

@@ -1,0 +1,103 @@
+\documentclass{article}
+\input{settings}
+\newdate{date}{25}{09}{2023}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin now!
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Page
+\input{entry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start the assignment now
+% Some extra information!
+\newpage
+
+\addcontentsline{toc}{section}{Background}
+\section*{BACKGROUND}
+You will analyze a subset of the SPEC 2006 benchmark suite compiled for the \texttt{ia32} (32-bit Intel architecture) ISA. Specifically, you will instrument each SPEC 2006 application binary with PIN and extract the percentages of various different instruction types. You will also use a very simple cycle accounting model to calculate the CPI for each application. Additionally, you will calculate the instruction and data footprints of each application. Finally, you will understand a few properties of the \texttt{ia32} ISA.
+
+In this assignment, we will be interested only in the following instruction types. At a very high level, we have two instruction types.
+
+\vspace{10pt}
+\noindent
+Type A: Instructions with no memory operand \\
+Type B: Instructions with at least one memory operand
+\vspace{10pt}
+
+You should only instrument the instructions that actually execute i.e., have true predicates. As a result, you should always use $\texttt{INS\_InsertPredicatedCall}$ method when classifying instructions.
+
+For Type B Instructions, Each memory operand in such an instruction can be read and/or written to.
+
+We will view each such load or store operation within a type B instruction as a separate micro-instruction and count it as a separate instruction.
+
+For example, a type B instruction may have two load operations and a store operation. Further, each such load or store operation may access an arbitrary amount of data. However, in a 32-bit processor, it is not possible to transfer more than 32 bits of data in one shot. As a result, we will further break down each memory operation into several memory accesses of size at most 32 bits.
+
+Finally, the instruction must be using these memory operands to carry out some operation of type A. This operation should be counted as a separate type A instruction and should also be categorized into one of the fifteen categories mentioned above.
+
+Let us take an example of an x86 instruction that has three memory operands, two of which are loads and one is a store. The loads access one and ten bytes, respectively. The store accesses eleven bytes. This instruction will be accounted as follows.
+
+\vspace{10pt}
+\noindent
+\texttt{Number of loads:   4}\\
+\texttt{Number of stores:   3}\\
+\texttt{Number of type A instruction:  1}
+\vspace{10pt}
+
+\noindent
+Total instruction count increases by eight, whenever such an instruction is encountered.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tasks pages begin
+\newpage
+\addcontentsline{toc}{section}{Tasks}
+\section*{TASKS}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New problem
+\input{problem1}
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New problem
+\input{problem2}
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New problem
+\input{problem3}
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New problem
+\input{problem4}
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Complete the assignment now
+\noindent
+
+\section*{Sidenotes}
+\begin{itemize}
+    \item \texttt{TARGE\_IA32} is a preprocessor directive that is \texttt{true} when building for \texttt{ia32}
+    \item All instructions that invoke the instrumentation routine are always classified at least as one of the Type-A. They can then be categorised in Type-B as well if they contain memory operands, and each 32B memory dealt with is treated as yet another purely Type-B instruction.
+    \item There happens no categorisation of Type-A/B till the fast-forwarded amount of actual instructions are executed.
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\linewidth}{|X|X|}
+        \hline
+        32b & 32 bits \\
+        \hline
+        32B & 32 Bytes \\
+        \hline
+        (B) & in Billions \\
+        \hline
+        \#Instructions & Number of Instructions \\
+        \hline
+    \end{tabularx}
+    \caption{Abbreviations}
+    \label{tab:abbreviations}
+\end{table}
+
+Please find more information regarding the submission in \texttt{README.md} in the submission directory.
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

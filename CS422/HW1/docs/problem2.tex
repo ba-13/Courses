@@ -1,0 +1,52 @@
+\begin{Problem}
+The second part of the assignment involves calculating the CPI for each benchmark. You should charge each load and store operation a fixed latency of seventy cycles and every other instruction a latency of one cycle.
+
+Tabulate the CPI of the applications in a table.
+\end{Problem}
+
+\begin{Solution}
+This can be simply calculated by
+\begin{align*}
+\texttt{CPI} &= \texttt{Memory Type\% * 70 + Rest Type\% * 1} \\
+&= \texttt{Memory Type\% * 69 + 1} \numberthis
+\end{align*}
+
+\begin{table}[H]
+    \centering
+    \caption{CPI per application}
+    \label{tab:pB:cpi}
+    \begin{tabular}{| l | c | c |}
+        \hline
+        \multirow{2}{*}{Application} & \multirow{2}{*}{\texttt{Memory Type\%}} & \multirow{2}{*}{CPI} \\
+        & & \\
+        \hline
+        400.perlbench & 35.169 & 24.266 \\
+        \hline
+        401.bzip2 & 37.141 & 25.627 \\
+        \hline
+        403.gcc & 30.551 & 21.080 \\
+        \hline
+        429.mcf & 33.930 & 23.412 \\
+        \hline
+        450.soplex & 29.190 & 20.141 \\
+        \hline
+        456.hmmer & 38.397 & 26.494 \\
+        \hline
+        471.omnetpp & 34.461 & 23.778 \\
+        \hline
+        483.xalancbmk & 33.053 & 22.806 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\end{Solution}
+
+% Some other code insertions:
+% \begin{lstlisting}[style=CStyle]
+% #include <stdio.h>
+% int main(void)
+% {
+%    printf("Hello Fibonacci!"); 
+% }
+% \end{lstlisting}
