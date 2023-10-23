@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./glMatrix-0.9.5.min.js"></script>
+  <script src="./_glInit.js"></script>
+  <script src="./_glsl.js"></script>
+  <script src="./_utils.js"></script>
+  <script src="./_shapes.js"></script>
+  <script src="./_events.js"></script>
+  <script src="./index.js"></script>
+  <title>Environment Reflection</title>
+</head>
+
+<body onload="webGLStart();">
+  <canvas id="canva" style="border: none" width="1200" height="600"></canvas>
+</body>
+
+<div class="instructions">
+  <div class="ins1">
+    Use SCROLL UP (↑) to ZOOM IN
+  </div>
+  <div class="ins2">
+    Use SCROLL DOWN (↓) to ZOOM OUT
+  </div>
+  <div class="ins3">
+    CLICK and HOLD-DRAG to control VIEW-ANGLE
+  </div>
+  <div class="ins4">
+    <span class="slider">Change Revolution Rate</span>
+    <input type="range" min="-300" max="300" value="4" class="slider" id="rateSlider">
+  </div>
+</div>
+
+<style>
+  .instructions {
+    margin-top: 1em;
+    width: 1200px;
+    display: grid;
+    grid-template-rows: 30px 30px 30px;
+  }
+
+  .instructions>* {
+    text-align: center;
+  }
+
+  .ins4 {
+    font-size: 2rem;
+  }
+</style>
+
+<script>
+  let rateSlider = document.getElementById("rateSlider");
+
+  rateSlider.oninput = function () {
+    const val = this.value / 10.0;
+    rateOfChange = val / 10;
+    animate();
+  };
+</script>
+
+</html>

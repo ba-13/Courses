@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="./glMatrix-0.9.5.min.js"></script>
+    <script src="./_glInit.js"></script>
+    <script src="./_glsl.js"></script>
+    <script src="./_utils.js"></script>
+    <script src="./_shapes.js"></script>
+    <script src="./index.js"></script>
+    <title>Sorcerer</title>
+</head>
+
+<body onload="webGLStart()">
+    <div class="frame">
+        <div class="image">
+            <canvas width="500" height="500" id="canva"></canvas>
+        </div>
+        <form action="" method="post">
+
+            <div class="type uploads">
+                Select Background Image
+                <span>
+                    <input id="background-upload" type="file" />
+                </span>
+                Select Foreground Image
+                <span>
+                    <input id="foreground-upload" type="file" />
+                </span>
+            </div>
+            <div class="type two-options image-mode">
+                <!-- Image mode calls modeSelection -->
+                <b>Image Mode</b>
+                <span>
+                    <input type="radio" name="image-mode" id="image-mode-background" value="1"
+                        onclick="modeSelection(1)">
+                    <label for="image-mode-background">Background Only</label>
+                </span>
+                <span>
+                    <input type="radio" name="image-mode" id="image-mode-alpha" onclick="modeSelection(2)" value="2">
+                    <label for="image-mode-alpha">Alpha Blended</label>
+                </span>
+            </div>
+            <div class="type two-options filter">
+                <!-- Filter calls filterSelection -->
+                <b>Filter</b>
+                <span>
+                    <input type="radio" name="filter" value="1" onclick="filterSelection(1)" id="filter-grayscale">
+                    <label for="filter-grayscale">GrayScale</label>
+                </span>
+                <span>
+                    <input type="radio" name="filter" value="2" onclick="filterSelection(2)" id="filter-sepia">
+                    <label for="filter-sepia">Sepia</label>
+                </span>
+            </div>
+            <div class="type settings">
+                <span class="slider-text">Contrast:</span>
+                <input type="range" min="-1.0" max="1.0" value="0.0" step="0.01" class="slider" id="contrastSlider">
+                <span class="slider-val" id="contrastVal"></span>
+                <span class="slider-text">Brightness:</span>
+                <input type="range" min="-1.0" max="1.0" value="0.0" step="0.01" class="slider" id="brightnessSlider">
+                <span class="slider-val" id="brightnessVal"></span>
+            </div>
+            <div class="type post-process">
+                <div id="post-process-title">Process Background Image:</div>
+                <div id="post-process-options">
+                    <span>
+                        <input type="radio" name="post-process" id="post-process-smooth" value="1"
+                            onclick="postProcessSelection(1)">
+                        <label for="post-process-smooth">Smooth</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="post-process" id="post-process-sharpen" value="2"
+                            onclick="postProcessSelection(2)">
+                        <label for="post-process-sharpen">Sharpen</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="post-process" id="post-process-gradient" value="3"
+                            onclick="postProcessSelection(3)">
+                        <label for="post-process-gradient">Gradient</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="post-process" id="post-process-laplacian" value="4"
+                            onclick="postProcessSelection(4)">
+                        <label for="post-process-laplacian">Laplacian</label>
+                    </span>
+                </div>
+            </div>
+            <div class="type buttons">
+                <button type="reset" class="button" id="reset" style="background-color: brown;">Reset Scene</button>
+                <a id="download" class="button" download="image.png">
+                    <button type="button" id="save-button">Save
+                        Screenshot</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="./_events.js"></script>
+
+</html>

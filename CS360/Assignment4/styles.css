@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  font-family: monospace;
+  --frame-width: 550px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  /* background-color: #4caf50; */
+}
+
+.frame {
+  width: var(--frame-width);
+  height: 760px;
+  margin: 5px 0 10px 10px;
+  padding: 0 10px 0 10px;
+  border: solid 1px black;
+  background-color: #d5f0e4;
+}
+
+.type {
+  margin-top: 10px;
+}
+
+.uploads {
+  display: grid;
+  grid-template-columns: calc(var(--frame-width) / 2) auto;
+  gap: 5px 0;
+}
+
+.two-options {
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns:
+    calc(var(--frame-width) / 5) calc(var(--frame-width) / 2.5)
+    calc(var(--frame-width) / 2.5);
+}
+
+.upload {
+  font-size: 1.2rem;
+}
+
+.settings {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: 100px 380px 80px;
+  gap: 5px 10px;
+}
+
+#post-process-title {
+  font-weight: 800;
+  background-color: aliceblue;
+}
+
+#post-process-options {
+  padding-left: 30px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: aliceblue;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.button {
+  cursor: pointer;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 1px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#save-button {
+  cursor: pointer;
+  border: none;
+  padding: none;
+  color: white;
+  background-color: transparent;
+}

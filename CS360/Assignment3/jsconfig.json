@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6"
+  },
+  "include": [
+    "./glMatrix-0.9.5.min.js",
+    "./_glsl.js",
+    "./_glInit.js",
+    "./_utils.js",
+    "./_shapes.js",
+    "./_events.js",
+    "./index.js"
+  ]
+}
