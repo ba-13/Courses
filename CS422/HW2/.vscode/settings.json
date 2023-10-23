@@ -1,0 +1,8 @@
+{
+  "C_Cpp.default.compilerPath": "/usr/lib/ccache/g++",
+  "files.associations": {
+    "*.rmd": "markdown",
+    "string": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
+}
