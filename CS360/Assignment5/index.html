@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./_glInit.js"></script>
+    <script src="./_glsl.js"></script>
+    <script src="./_utils.js"></script>
+    <script src="./index.js"></script>
+    <title>Ray Tracing</title>
+</head>
+
+<body onload="webGLStart()">
+    <div class="frame">
+        <canvas id="canva" width="550px" height="550px"></canvas>
+        <div class="gap shading-modes">
+            <div class="title">Shading Mode</div>
+            <button class="btn" onclick="changeState(0)">Phong</button>
+            <button class="btn" onclick="changeState(1)">Phong + Shadow</button>
+            <button class="btn" onclick="changeState(2)">Phong + Reflection</button>
+            <button class="btn" onclick="changeState(3)">Phong + Shadow + Reflection</button>
+            <div class="drag">🖱️CLICK + DRAG</div>
+        </div>
+        <div class="gap settings">
+            <label for="lightX">Move Light:</label>
+            <input type="range" name="lightX" min="-100.0" max="100.0" value="0.0" step="1.0" id="sliderLightX" />
+            <span id="sliderLightXVal"></span>
+            <label for="bounce">Bounce Limit:</label>
+            <input type="range" name="bounce" min="0" max="10" value="1" step="1" id="sliderBounce" />
+            <span id="sliderBounceVal"></span>
+        </div>
+    </div>
+</body>
+<script src="./_events.js"></script>
+
+</html>

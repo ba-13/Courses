@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6"
+  },
+  "include": [
+    "./_glInit.js",
+    "./_glsl.js",
+    "./_utils.js",
+    "./index.js",
+    "./_events.js"
+  ]
+}

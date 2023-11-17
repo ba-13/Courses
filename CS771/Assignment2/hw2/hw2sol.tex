@@ -1,0 +1,314 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{mlsubmit}
+
+\begin{document}
+
+\initmlsubmision{2} % assignment number
+{Anshuman Barnwal}   % your name
+{200259}	% your roll number
+
+\begin{mlsolution}
+
+K-means objective function and gradient for a single sample $x_n$ would be:
+\[
+    \mathcal{L} = \sum_{k=1}^{k} z_k \lVert x_n - \mu_k \rVert^2\;\;\;\;\;\;\;\;\;\;
+    \frac{\partial \mathcal{L}}{\partial \mu_k} = 2(\mu_k - x_n)
+\]
+\begin{enumerate}
+\item 
+    Assigning best cluster to sample $x_n$ by $\mu_n = \argmin_{\mu_k} \lVert x_n - \mu_k \rVert^2$, i.e. the closest mean to the sample.
+\item 
+    We could now optimize only for this particular mean, because $\mathcal{L}$ would have contributions from $z_k \ni \mu_k\neq\mu_n$ as $0$, giving update equation as:
+    \begin{align*}
+        \mu_k^{(t+1)} &= \mu_k^{(t)} - \eta \frac{\partial\mathcal{L}}{\partial\mu_k} \\
+        &= \begin{cases}
+            \mu_k^{(t)} - \eta \cdot 2 (\mu_k^{(t)} - x_n) & \mu_k = \mu_n \\
+            \mu_k^{(t)} & else
+        \end{cases}
+    \end{align*}
+    This implies only the best cluster mean changes during this iteration. Intuitively, such an update makes sense because once alloted a mean, the sample doesn't affect or contribute to other means. Also the update on the alloted mean makes sense as it can be re-written as $(1 - 2\eta)\cdot\mu_k^{(t)} + 2\eta\cdot x_n$, which is of the form of a rolling weighted average, that ``pushes" the mean towards the sample $x_n$, leading to lesser loss value for this sample.
+\item
+    This loss optimization is no different than any other SGD optimization techniques, therefore general methods of deciding step size $\eta$ should work. Adaptive learning rate, Adam should be therefore used. Now the update rule would transform to
+    \begin{align*}
+        \eta_t &= C \cdot \begin{bmatrix}
+            \frac{1}{\sqrt{\epsilon + \sum_{\tau=1}^{t} (g_1^{(t)})}} \\
+            \vdots
+        \end{bmatrix}_{\texttt{n} \times 1} \\
+        m^{(t)} &= m^{(t-1)} + \eta_t \odot \frac{\partial \mathcal{L}}{\partial \mu_n} \\
+        \mu_n^{(t+1)} &= \mu_n^{(t)} - m^{(t)}
+    \end{align*}
+    Where $\odot$ is element-wise scaling, and \texttt{n} is dimension of $x_n$
+    This choice leads to taking care of making larger steps at start and slowing down when nearing convergence, also it takes care of directions which need more movement by tracking gradient sum in all directions. Here $C$ can be made as $\min_{i, j} \lVert \mu_i - \mu_j \rVert * \beta$ to take into account distance scaling per step, where $\beta$ may be some other constant like $0.01$.
+\end{enumerate}
+
+\end{mlsolution}
+
+\begin{mlsolution} 
+
+Given training dataset $\mathcal{X} = \{x_n \in \mathbb{R}^D, y_n \in \{-1, +1\}\}$, we need a projection model that uses a projection direction $w \in \mathbb{R}^D$ and
+\begin{enumerate}[noitemsep]
+    \item Distance between means of inputs are as large as possible
+    \item Inputs within each class become as close to each other as possible
+\end{enumerate}
+
+Let both cluster means be:
+\begin{align*}
+\phi_{+} = \frac{1}{N_+} \sum_{n}^{y_n = +1} x_n
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+\phi_- = \frac{1}{N_-} \sum_{n}^{y_n = -1} x_n
+\end{align*}
+
+The projection model is of form $z_n = g(x_n)$, where the projection technique might be a general $g(x_n) = \langle w, x_n \rangle = w \cdot x_n = w^T \textbf{A} x_n$.
+Defining this way means projection is distributive over addition, so mean of projections is the same as projection of the mean.
+
+Distance between class means can be written as:
+\begin{align}
+    d(w, \mathcal{X}) = \big\lVert w \cdot \phi_+ - w \cdot \phi_- \big\rVert
+\end{align}
+
+Making a cluster's samples close to each other is equal to reducing their variance, which again is equivalent to reducing a sample's distance from the cluster mean.
+Variance within both clusters can be written as:
+\begin{align}
+    v(w, \mathcal{X}) = \frac{1}{N_+}\sum_{n}^{y_n=+1} (w \cdot x_n - w \cdot \phi_+)^2 +
+    \frac{1}{N_-}\sum_{n}^{y_n=-1} (w \cdot x_n - w \cdot \phi_-)^2
+\end{align}
+
+Designing an objective using above both parts, such that $d(w, \mathcal{X})$ increases and $v(w, \mathcal{X})$ decreases is:
+\begin{align}
+    \mathcal{L}(w, \mathcal{X}) = v(w, \mathcal{X}) - d(w, \mathcal{X})
+\end{align}
+
+\end{mlsolution}
+
+\begin{mlsolution}
+
+Let $X_{(N\times D)}$ be the dataset that we want to apply PCA on. Also given $D > N$.
+
+We're given the eigen vectors of matrix $\frac{1}{N}XX^T$, so let $u$ be one of the eigen vectors:
+\begin{align*}
+    XX^T u &= \lambda u \\
+    X^T (XX^T u) &= X^T \lambda u \\
+    X^TX (X^T u) &= \lambda (X^T u) \\
+    X^TX w &= \lambda w
+\end{align*}
+By this modification, we can see that eigen-vector $w$ of matrix $S = \frac{1}{N}X^TX$ can be obtained by transforming $u$ with $X^T$.
+
+This method is quite effective way to calculate eigen vectors in case of $D > N$ because eigen decomposition of a $d \times d$ matrix is a computationally heavy task dependant on $d$.
+Eigen value decomposition of $(X^TX)_{(D\times D)}$ is much more expensive than that of $(XX^T)_{(N\times N)}$. The best current complexity of Eigenvalue decomposition is $\mathcal{O}(n^3 + n^2 lg^2(n))$ as shown \href{https://cstheory.stackexchange.com/a/2810}{here}.
+
+The only extra computation required after eigen-vector matrix $V$ is obtained as $XX^T = V^T \Lambda V$ by transforming it with $X^T$ as shown in above calculation, which would is just a matrix multiplication of naive complexity $\mathcal{O}(n^3)$.
+
+Final calculation comparison would be:
+\begin{itemize}[itemsep=2pt]
+    \item From $X^TX$, eigen value decomposition of $D\times D$, taking complexity of $\mathcal{O}(D^3 + D^2 lg^2(D))$.
+    \item From $XX^T$, eigen value decomposition of $N \times N$, followed by matrix multiplication, taking complexity of $\mathcal{O}(N^3 + N^2 lg^2(N) + N^2D)$
+\end{itemize}
+
+\end{mlsolution}
+
+\begin{mlsolution}
+
+A probabilistic linear regression model yields a distribution per input, here it's given by:
+\begin{align*}
+    p(y_n \vert x_n, w) = \mathcal{N}(y_n \vert w^T x_n, \beta^{-1})
+\end{align*}
+The proposed modelling technique is to define a latent variable $z_n \in \{1, 2, \cdots K\}$ corresponding to each $x_n$ where each value of $z_n$ corresponds to a different probabilistic linear regression model, i.e. a different $z_n = k$ corresponds to $w_k$.
+
+\begin{enumerate}
+    \item This method is more powerful than standard probabilistic linear model because it models multiple linear regressions simultaneously and allots each sample to one of them; simulating what a regression decision tree might perform, leading to a non-linear model overall.
+\item 
+    Optimizing this through ALT-OPT implies we're solving for Complete Data Log Likelihood; we want to perform hard guesses of $Z$, and use that to optimize the weights $\Theta = \{ \{ w_1, \cdots w_K \}, \{ \pi_1, \cdots \pi_K \} \}$.
+    \begin{enumerate}
+        \item For each $n$, compute the most probable value of $z_n$ via the \textit{conditional posterior}
+        \begin{align}
+            \hat{z}_n = \argmax_k p(z_n = k \vert \hat{\Theta}, y_n) &= \argmax_k\; \frac{p(z_n = k \vert \Theta) p(y_n \vert z_n = k, \Theta)}{\sum_{l=1}^{K}p(z_n = l \vert \Theta) p(y_n \vert z_n = l, \Theta)}\label{eq4.4} \\
+            &= \argmax_k\; \pi_k \mathcal{N}(y_n \vert w_k^T x_n, \beta^{-1}) \label{eq4.5}
+        \end{align}
+        Where denominator of \ref{eq4.4} is a constant across optimization. Now use this $\hat{z}_{n}$ as the one-hot encoded vector $z_n$ where $z_{nk} = 1$ if $\hat{z}_{n} = k$ else $z_{nk} = 0$.
+        \item To compute $\Theta$ now, we can directly utilize \textit{MLE} form
+        \begin{align*}
+            \Theta_{MLE} &= \argmax_\Theta\; log(p(Y, \hat{Z} \vert \Theta)) \\
+            &= \argmax_\Theta\; \sum_{n=1}^{N} log\left( p(y_n, z_n \vert \Theta) \right)
+        \end{align*}
+        Now using the fact that $z_n$ is a one-hot encoded vector, i.e. alloting the whole contribution of this sample from a particular $z_n = k$ value
+        \begin{align}
+            \Theta_{MLE} &= \argmax_\Theta\; \sum_{n=1}^{N} \sum_{k=1}^{K} z_{nk}\left[log \pi_k + log \mathcal{N} (y_n \vert w_k^T x_n, \beta^{-1})\right]
+        \end{align}
+        Consider the constraint $\sum_{k=1}^{K} \pi_k = 1$, create the lagrangian.
+        \begin{align}
+            \argmax_\Theta\; \sum_{n=1}^{N} \sum_{k=1}^{K} z_{nk}\left[log \pi_k + log \mathcal{N} (y_n \vert w_k^T x_n, \beta^{-1})\right] + \lambda (1 - \sum_{k=1}^{K} \pi_k)
+        \end{align}
+        
+        Taking derivative w.r.t. each $w_k$ and $\pi_k$ and equating to 0, and let $N_k = \sum_{n=1}^{N} z_{nk}$, which is equivalent to number of samples corresponding to $\hat{z}_n = k$, we obtain
+        \begin{align}
+            \pi_k = \frac{N_k}{N} \label{eq4.8} \\
+            w_k = (X_k^T X_k)^{-1} X_k^T y_k \label{eq4.9}
+        \end{align}
+        where $\{X_k, y_k\}$ is the dataset corresponding to $\hat{z}_n = k$ for all $k \in \{1, \cdots K\}$.
+
+    \end{enumerate}
+    For the case when $\pi_k = \frac{1}{K}\ \forall\ k$, update of $z_n$ reduces to
+    \begin{align*}
+        \hat{z}_n = \argmax_k\; exp\left(\frac{-\beta}{2}(y_n - w^T_k x_n)^2\right)
+    \end{align*}
+    This update implies all gaussians are similar in scale.
+\end{enumerate}
+The above updates of \ref{eq4.5}, \ref{eq4.8} and \ref{eq4.9} make intuitive sense because once we've alloted $z_n$ for every $x_n$, in sense our dataset gets clustered over the latent variable space, and within each cluster, the weights $w_k$ are of standard linear regression, and priors $pi_k$ reflect the number of samples per cluster. Also deciding $z_n$ per $x_n$ itself takes into consideration the priors as well as the closeness of outputs to estimates per latent variable.
+
+\end{mlsolution}
+	
+\begin{mlsolution}
+
+\section*{Solution to Part 1}
+\subsection*{1.1}
+Kernelizing ridge regression yields as shown \href{https://web2.qatar.cmu.edu/~gdicaro/10315-Fall19/additional/welling-notes-on-kernel-ridge.pdf}{here}
+\begin{align}
+    w = \Phi (\Phi^T\Phi + \lambda \textbf{I}_n)^{-1}\textbf{y}
+\end{align}
+Where $\Phi$ is matrix having each data sample along rows being expanded to kernel space. \\
+Therefore prediction is done using:
+\begin{align}
+    y_* = w^T x_* &= \textbf{y}^T (\Phi^T\Phi + \lambda
+    \textbf{I}_n)^{-1} \Phi^T \Phi(x_*) \\
+    &= \textbf{y}^T (\mathcal{K} + \lambda I_n)^{-1} \mathcal{K}(x_*)
+\end{align}
+
+As this problem has $x_n$ being a scalar, $x_i^Tx_j = x_i\times x_j$, and $$\Phi(x_i)^T \Phi(x_j) = k(x_i, x_j) = exp(-\gamma (x_i - x_j)^2)$$
+
+\subsubsection*{Results}
+By keeping $\gamma = 0.1$
+\begin{center}
+    \begin{tabular}[pos]{|c|c|}
+        \hline
+        Lambda & RMSE \\
+        \hline
+        0.1  & 0.033 \\
+        1    & 0.170 \\
+        10   & 0.609 \\
+        100  & 0.911 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[Lambda=0.1]{\includegraphics[width=0.49\textwidth]{../data/kernel_ridge_figs/Lambda_0.1_.png}}
+    \subfigure[Lambda=1]{\includegraphics[width=0.49\textwidth]{../data/kernel_ridge_figs/Lambda_1_.png}}
+    
+    \subfigure[Lambda=10]{\includegraphics[width=0.49\textwidth]{../data/kernel_ridge_figs/Lambda_10_.png}}
+    \subfigure[Lambda=100]{\includegraphics[width=0.49\textwidth]{../data/kernel_ridge_figs/Lambda_100_.png}}
+    
+    \caption{Kernel Ridge Regression figures}
+    \label{fig:part5.1.1}
+\end{figure}
+
+\subsection*{1.2}
+Landmark ridge regression involves recreating the feature vector per sample by:
+\begin{enumerate}[noitemsep]
+    \item Define a set of $L$ landmarks out of the input dataset by uniform sampling
+    \item Create new feature vector per input by:
+    \begin{align*}
+        \tilde{x}_n = \begin{bmatrix}
+            k(z_1, x_n) \\
+            k(z_2, x_n) \\
+            k(z_3, x_n) \\
+            \vdots \\
+            k(z_L, x_n)
+        \end{bmatrix}
+    \end{align*}
+    \item Use the new feature vector instead of the original for furthur modelling.
+\end{enumerate}
+
+\subsubsection*{Results}
+By keeping $gamma = 0.1$ and $\lambda = 0.1$
+\begin{center}
+    \begin{tabular}[pos]{|c|c|}
+        \hline
+        L & RMSE \\
+        \hline
+        2   & 0.964 \\
+        5   & 0.872 \\
+        20  & 0.264 \\
+        50  & 0.085 \\
+        100 & 0.067 \\
+        \hline
+    \end{tabular}
+\end{center}
+Clearly, change in RMSE from 20 to 50 is much higher than 50 to 100, after which it's nearly the same. So $L=50$ is good enough number of landmarks.
+
+\begin{figure}[H]
+    \centering
+    \subfigure[L=2]{\includegraphics[width=0.49\textwidth]{../data/landmark_ridge_figs/L_2_.png}}
+    \subfigure[L=5]{\includegraphics[width=0.49\textwidth]{../data/landmark_ridge_figs/L_5_.png}}
+    
+    \subfigure[L=20]{\includegraphics[width=0.49\textwidth]{../data/landmark_ridge_figs/L_20_.png}}
+    \subfigure[L=50]{\includegraphics[width=0.49\textwidth]{../data/landmark_ridge_figs/L_50_.png}}
+    \subfigure[L=100]{\includegraphics[width=0.49\textwidth]{../data/landmark_ridge_figs/L_100_.png}}
+    
+    \caption{Landmark Ridge Regression figures}
+    \label{fig:part5.1.2}
+\end{figure}
+
+\section*{Solution to Part 2}
+\subsection*{2.1}
+Upon analyzing the original dataset, a good hand-crafted feature would be the radial distance of data samples from origin. Therefore creating a third feature as $\lVert x_n \rVert^2_2$, we obtain the following results:
+
+\begin{figure}[H]
+    \centering
+    \subfigure["Kernelized" Space where KMeans is used]{\includegraphics[width=0.49\textwidth]{../data/manual_kmeans_figs/3d.png}}
+    \subfigure[Original Space]{\includegraphics[width=0.49\textwidth]{../data/manual_kmeans_figs/2d.png}}
+    
+    \caption{Hand-crafted features for linear K-Means}
+    \label{fig:part5.2.1}
+\end{figure}
+
+\subsection*{2.2}
+Using one landmark and kernelizing the whole dataset on that basis, using the kernelized features for k-means, we obtain the following:
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/0.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/1.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/2.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/3.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/4.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/5.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/6.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/7.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/8.png}}
+    \subfigure[]{\includegraphics[width=0.32\textwidth]{../data/weird_kmeans_figs/9.png}}
+    
+    \caption{Landmark kernelized features for linear K-Means}
+    \label{fig:part5.2.2}
+\end{figure}
+
+As observed in the above figures, the landmark decides the new features. Plotting the new feature in the z-axis makes it clear how clustering happens furthur:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../data/weird_kmeans_figs/3d_3.png}
+    \caption{3D view of \ref{fig:part5.2.2}(d)}
+    \label{fig:part5.2.2.a}
+\end{figure}
+
+Clearly the nearness to landmark leads to a higher value towards $1$ in the z-axis, while being furthur leads to a lower value towards $0$. Therefore if the landmark is by chance chosen near center of the inner disk, all of that disk being near to the landmark gains a value close to $1$, as seen in \ref{fig:part5.2.2}(a).
+
+\section*{Solution to Part 3}
+Visualizing data using \texttt{sklearn} is quite straightforward and is treated as a black-box during usage.
+
+The difference observed between PCA and tSNE is that tSNE preserves the structure of clusters formed by digits in the higher dimensions even after the projection, and doesn't just project along the highest variance axes like PCA does, therefore the color clusters seem coherent and not flushed out in tSNE unlike PCA. Thus tSNE is a better manifold projection visulation technique.
+
+\begin{figure}[H]
+    \centering
+    \subfigure[PCA]{\includegraphics[width=0.49\textwidth]{../data/mnist_figs/pca.png}}
+    \subfigure[tSNE]{\includegraphics[width=0.49\textwidth]{../data/mnist_figs/tsne.png}}
+    
+    \caption{Projection and Visualization techniques for multi-dimensional inputs}
+    \label{fig:part5.3}
+\end{figure}
+
+\end{mlsolution}
+
+
+\end{document}
